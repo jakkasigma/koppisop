@@ -1,0 +1,228 @@
+/* Admin shell layout */
+
+body.admin-ui {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body.admin-ui * {
+  box-sizing: border-box;
+}
+
+.admin-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 16rem minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
+  background: var(--background);
+}
+
+.admin-sidebar {
+  grid-row: 1 / -1;
+}
+
+.admin-topbar {
+  grid-column: 2;
+}
+
+.admin-main {
+  grid-column: 2;
+  min-width: 0;
+  background: var(--background);
+}
+
+.admin-content,
+.admin-main > .container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 1.5rem;
+}
+
+.admin-main > .container {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.admin-page-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.admin-page-label,
+.admin-page-kicker {
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.admin-page-head h1 {
+  margin: 0.25rem 0 0;
+  color: var(--foreground);
+  font-size: 1.75rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+}
+
+.admin-page-head p,
+.admin-page-sub {
+  margin: 0.35rem 0 0;
+  color: var(--muted-foreground);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+.admin-page-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.admin-chip {
+  min-height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 0.125rem);
+  background: var(--card);
+  color: var(--foreground);
+  padding: 0 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+}
+
+.admin-chip.soft {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.pwa-install {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  border-radius: calc(var(--radius) + 0.25rem);
+}
+
+@media (max-width: 900px) {
+  .admin-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-topbar,
+  .admin-main {
+    grid-column: 1;
+  }
+
+  /* Sidebar overlay — tampil di belakang sidebar saat terbuka */
+  body.admin-sidebar-open::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 99;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(2px);
+    animation: sidebar-overlay-in 0.2s ease;
+  }
+
+  /* Kunci scroll body saat sidebar terbuka */
+  body.admin-sidebar-open {
+    overflow: hidden;
+  }
+}
+
+/* Dark mode toggle button di topbar */
+.admin-topbar-theme-btn {
+    position: relative;
+    width: 2.25rem;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-topbar-theme-btn .theme-icon-light,
+.admin-topbar-theme-btn .theme-icon-dark {
+    font-size: 1rem;
+    line-height: 1;
+    transition: opacity 0.15s, transform 0.15s;
+}
+
+/* Light mode: tampilkan sun, sembunyikan moon */
+.admin-topbar-theme-btn .theme-icon-dark { display: none; }
+.admin-topbar-theme-btn .theme-icon-light { display: inline; }
+
+/* Dark mode: tampilkan moon, sembunyikan sun */
+[data-theme="dark"] .admin-topbar-theme-btn .theme-icon-light,
+.dark .admin-topbar-theme-btn .theme-icon-light { display: none; }
+[data-theme="dark"] .admin-topbar-theme-btn .theme-icon-dark,
+.dark .admin-topbar-theme-btn .theme-icon-dark { display: inline; }
+
+/* Kasir role: floating dark mode toggle */
+.kasir-theme-toggle {
+    position: fixed;
+    bottom: 5rem;
+    right: 1rem;
+    z-index: 50;
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 50%;
+    border: 1px solid var(--kasir-border, #d7e4e2);
+    background: var(--kasir-surface, #fff);
+    color: var(--kasir-text, #0f172a);
+    font-size: 1.25rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+.kasir-theme-toggle:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+}
+.kasir-theme-toggle .theme-icon-dark { display: none; }
+.kasir-theme-toggle .theme-icon-light { display: inline; }
+[data-theme="dark"] .kasir-theme-toggle .theme-icon-light,
+.dark .kasir-theme-toggle .theme-icon-light { display: none; }
+[data-theme="dark"] .kasir-theme-toggle .theme-icon-dark,
+.dark .kasir-theme-toggle .theme-icon-dark { display: inline; }
+
+@keyframes sidebar-overlay-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .admin-main > .container {
+    padding: 0.875rem;
+  }
+
+  .admin-page-head h1 {
+    font-size: 1.375rem;
+    line-height: 1.875rem;
+  }
+
+  /* Touch targets — minimum 44px */
+  body.admin-ui input,
+  body.admin-ui select,
+  body.admin-ui textarea {
+    min-height: 2.75rem;
+    font-size: 1rem; /* Cegah zoom otomatis di iOS */
+  }
+
+  body.admin-ui .btn-primary,
+  body.admin-ui .btn-neutral,
+  body.admin-ui .btn-danger {
+    min-height: 2.75rem;
+  }
+}

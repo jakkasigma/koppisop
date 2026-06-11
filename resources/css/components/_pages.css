@@ -1,0 +1,4762 @@
+/* ═══════════════════════════════════════════════════════════
+   Page-specific CSS — semua halaman admin
+   Menggantikan class yang hilang per-halaman.
+═══════════════════════════════════════════════════════════ */
+
+/* ──────────────────────────────────────
+   DASHBOARD — layout utama
+────────────────────────────────────── */
+body.admin-ui .admin-dashboard-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.875rem;
+}
+
+body.admin-ui .admin-dashboard-toolbar-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+/* Section cards grid — 4 kartu KPI atas */
+body.admin-ui .admin-section-cards {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.875rem;
+}
+
+body.admin-ui .admin-section-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+}
+
+body.admin-ui .admin-section-cards .admin-section-card {
+  display: grid;
+  gap: 0.25rem;
+  text-decoration: none;
+}
+
+body.admin-ui .admin-section-cards .admin-section-card strong {
+  font-size: 1.625rem;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.2;
+}
+
+body.admin-ui .admin-section-cards .admin-section-card p {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Main grid — chart + payment card */
+body.admin-ui .admin-dashboard-main-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 1fr);
+  gap: 0.875rem;
+  align-items: start;
+}
+
+/* Dashboard chart container — butuh dimensi agar React bisa mount */
+body.admin-ui #react-dashboard-chart {
+  min-height: 360px;
+  width: 100%;
+}
+
+/* Payment card */
+body.admin-ui .admin-payment-card {
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 0.25rem);
+  background: var(--card);
+  padding: 1.25rem;
+  display: grid;
+  gap: 1rem;
+}
+
+body.admin-ui .admin-payment-card .admin-card-header {
+  margin-bottom: 0;
+}
+
+body.admin-ui .admin-payment-card .mini-nav {
+  display: flex;
+  gap: 0.25rem;
+}
+
+body.admin-ui .admin-payment-card .mini-nav .btn-neutral {
+  min-height: 1.875rem;
+  padding: 0 0.625rem;
+  font-size: 0.8rem;
+}
+
+body.admin-ui .admin-payment-card .mini-nav .btn-neutral.active {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+body.admin-ui .admin-payment-content {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+/* Donut chart */
+body.admin-ui .pay-donut {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: var(--donut-bg, conic-gradient(var(--muted) 0deg 360deg));
+  flex-shrink: 0;
+}
+
+body.admin-ui .pay-donut::after {
+  content: '';
+  position: absolute;
+  inset: 20px;
+  border-radius: 50%;
+  background: var(--card);
+}
+
+body.admin-ui .pay-center {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  text-align: center;
+}
+
+body.admin-ui .pay-center div {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+body.admin-ui .pay-center strong {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.2;
+}
+
+body.admin-ui .pay-legend {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  gap: 0.375rem;
+}
+
+body.admin-ui .pay-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  font-size: 0.8125rem;
+  flex-wrap: wrap;
+}
+
+body.admin-ui .pay-dot {
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+body.admin-ui .pay-label {
+  flex: 1;
+  min-width: 0;
+  color: var(--foreground);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+body.admin-ui .pay-value {
+  font-weight: 700;
+  color: var(--foreground);
+  white-space: nowrap;
+}
+
+body.admin-ui .pay-trx,
+body.admin-ui .pay-pct {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  white-space: nowrap;
+}
+
+/* Action grid — 3 kartu bawah chart */
+body.admin-ui .admin-dashboard-action-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.875rem;
+  align-items: start;
+}
+
+/* Staff list */
+body.admin-ui .admin-staff-list {
+  display: grid;
+  gap: 0.375rem;
+}
+
+body.admin-ui .admin-staff-row {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.625rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--background);
+  font-size: 0.8125rem;
+}
+
+body.admin-ui .admin-staff-row > span:first-child {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+body.admin-ui .admin-staff-row strong {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+body.admin-ui .admin-staff-row em {
+  font-style: normal;
+  font-size: 0.75rem;
+  flex-shrink: 0;
+}
+
+body.admin-ui .admin-staff-row em.ok { color: var(--chart-2); }
+body.admin-ui .admin-staff-row em.warn { color: var(--chart-4); }
+
+/* Finance list */
+body.admin-ui .admin-finance-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+body.admin-ui .admin-finance-list > div {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.875rem;
+}
+
+body.admin-ui .admin-finance-list > div:last-child {
+  border-bottom: none;
+}
+
+body.admin-ui .admin-finance-list span {
+  color: var(--muted-foreground);
+}
+
+body.admin-ui .admin-finance-list strong {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+/* Split section — 2 cards bawah */
+body.admin-ui .admin-dashboard-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.875rem;
+  align-items: start;
+}
+
+/* Table card full width */
+body.admin-ui .admin-dashboard-table-card {
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 0.25rem);
+  background: var(--card);
+  overflow: hidden;
+}
+
+body.admin-ui .admin-dashboard-table-card .admin-card-header {
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+
+body.admin-ui .admin-dashboard-table-card .table-wrap {
+  border: none;
+  border-radius: 0;
+}
+
+body.admin-ui .admin-card-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* trx-link inside table */
+body.admin-ui .trx-link {
+  color: var(--foreground);
+  text-decoration: none;
+  font-weight: 600;
+  font-family: monospace;
+}
+
+body.admin-ui .trx-link:hover {
+  text-decoration: underline;
+  color: var(--primary);
+}
+
+/* sync-pill */
+body.admin-ui .sync-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.625rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  background: var(--muted);
+  color: var(--muted-foreground);
+}
+
+body.admin-ui .sync-pill.ok {
+  background: color-mix(in oklch, var(--chart-2) 15%, transparent);
+  border-color: color-mix(in oklch, var(--chart-2) 35%, transparent);
+  color: var(--chart-2);
+}
+
+body.admin-ui .sync-pill.warn {
+  background: color-mix(in oklch, var(--chart-4) 15%, transparent);
+  border-color: color-mix(in oklch, var(--chart-4) 35%, transparent);
+  color: var(--chart-4);
+}
+
+body.admin-ui .sync-pill.err {
+  background: color-mix(in oklch, var(--destructive) 12%, transparent);
+  border-color: color-mix(in oklch, var(--destructive) 35%, transparent);
+  color: var(--destructive);
+}
+
+/* admin-modebar */
+body.admin-ui .admin-modebar {
+  max-width: fit-content;
+}
+
+/* Dashboard responsive */
+@media (max-width: 1180px) {
+  body.admin-ui .admin-section-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  body.admin-ui .admin-dashboard-main-grid {
+    grid-template-columns: 1fr;
+  }
+  body.admin-ui .admin-payment-content {
+    flex-direction: row;
+  }
+}
+
+@media (max-width: 900px) {
+  body.admin-ui .admin-section-cards {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  body.admin-ui .admin-dashboard-action-grid {
+    grid-template-columns: 1fr;
+  }
+  body.admin-ui .admin-dashboard-split {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  body.admin-ui .admin-section-cards {
+    grid-template-columns: 1fr;
+  }
+  body.admin-ui .admin-dashboard-action-grid {
+    grid-template-columns: 1fr;
+  }
+  body.admin-ui .admin-dashboard-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ──────────────────────────────────────
+   STATISTIK PAGE — layout baru
+   Chart full-width di atas, tabel grid di bawah
+────────────────────────────────────── */
+
+/* Chart wrapper — full width, memberi tinggi minimum agar React bisa mount */
+body.admin-ui .stat-chart-wrap {
+  width: 100%;
+  margin-bottom: 1.25rem;
+}
+body.admin-ui .stat-chart-wrap #react-statistik-chart {
+  min-height: 480px;
+  width: 100%;
+}
+
+/* Tabel-tabel — 2 kolom di tablet ke atas */
+body.admin-ui .stat-tables {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+
+/* Kartu tabel biasa — mengisi 1 kolom */
+body.admin-ui .stat-table-card {
+  /* inherits admin-soft-card */
+}
+
+/* Jam Ramai — bentang penuh 2 kolom */
+body.admin-ui .stat-heat-card {
+  grid-column: 1 / -1;
+}
+
+/* Jam Ramai grid — lebih rapat di layout baru (6 kolom) */
+body.admin-ui .stat-heat-card .heat-grid {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+@media (max-width: 1024px) {
+  body.admin-ui .stat-tables {
+    grid-template-columns: 1fr;
+  }
+  body.admin-ui .stat-heat-card {
+    grid-column: 1 / -1;
+  }
+  body.admin-ui .stat-heat-card .heat-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  body.admin-ui .stat-heat-card .heat-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ──────────────────────────────────────
+   MODAL — unprefixed (global admin)
+   Dipakai di: absensi, keuangan, absensi-settings
+────────────────────────────────────── */
+body.admin-ui .modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s ease;
+  padding: 1rem;
+}
+body.admin-ui .modal-backdrop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+body.admin-ui .modal-card {
+  position: relative;
+  z-index: 201;
+  width: 100%;
+  max-width: 38rem;
+  max-height: 92vh;
+  overflow-y: auto;
+  border-radius: calc(var(--radius) + 0.375rem);
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--card-foreground);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  transform: translateY(10px) scale(0.98);
+  transition: transform 0.18s ease;
+}
+body.admin-ui .modal-backdrop.show .modal-card {
+  transform: translateY(0) scale(1);
+}
+
+body.admin-ui .modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+body.admin-ui .modal-title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.4;
+}
+
+body.admin-ui .modal-sub {
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  line-height: 1.4;
+}
+
+body.admin-ui .modal-body {
+  padding: 1.25rem 1.5rem;
+  display: grid;
+  gap: 1rem;
+}
+
+body.admin-ui .modal-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+body.admin-ui .modal-close-btn {
+  flex-shrink: 0;
+}
+
+/* nested modal (keuangan) */
+body.admin-ui .modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+body.admin-ui .modal[hidden] {
+  display: none;
+}
+body.admin-ui .modal > .modal-backdrop {
+  position: absolute;
+  inset: 0;
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 0;
+}
+body.admin-ui .modal > .modal-card {
+  position: relative;
+  z-index: 1;
+  max-width: 28rem;
+}
+
+/* ──────────────────────────────────────
+   MODAL — inline forms
+────────────────────────────────────── */
+body.admin-ui .modal-inline-form {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+body.admin-ui .modal-reject-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+}
+body.admin-ui .modal-reject-form label {
+  width: 100%;
+  margin-bottom: -0.25rem;
+}
+body.admin-ui .modal-reject-form input {
+  flex: 1;
+  min-width: 0;
+}
+body.admin-ui .modal-inline-form.is-disabled,
+body.admin-ui .modal-reject-form.is-disabled {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+body.admin-ui .modal-correction-wrap {
+  display: grid;
+  gap: 0.875rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+body.admin-ui .modal-correction-actions {
+  display: grid;
+  gap: 0.625rem;
+}
+
+body.admin-ui .modal-photo-wrap {
+  text-align: center;
+}
+body.admin-ui .modal-photo-wrap.is-hidden {
+  display: none;
+}
+body.admin-ui .modal-photo {
+  max-width: 100%;
+  max-height: 220px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
+/* ──────────────────────────────────────
+   VERIFY SUMMARY (modal absensi)
+────────────────────────────────────── */
+body.admin-ui .verify-summary {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: calc(var(--radius) + 0.25rem);
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+  border: 1px solid var(--border);
+}
+body.admin-ui .verify-summary-main {
+  flex: 1;
+  min-width: 0;
+}
+body.admin-ui .verify-summary-kicker {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+body.admin-ui .verify-summary-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.25rem;
+}
+body.admin-ui .verify-summary-sub {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+body.admin-ui .verify-summary-note {
+  margin-top: 0.375rem;
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  font-style: italic;
+}
+body.admin-ui .verify-summary-note.is-waiting {
+  color: var(--chart-4);
+}
+body.admin-ui .verify-summary-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.375rem;
+  flex-shrink: 0;
+}
+
+/* ──────────────────────────────────────
+   META GRID (modal absensi & transaksi)
+────────────────────────────────────── */
+body.admin-ui .meta-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.625rem;
+}
+body.admin-ui .meta-card {
+  padding: 0.75rem;
+  border-radius: calc(var(--radius) + 0.125rem);
+  border: 1px solid var(--border);
+  background: var(--background);
+}
+body.admin-ui .meta-card.is-highlight {
+  border-color: color-mix(in oklch, var(--primary) 40%, transparent);
+  background: color-mix(in oklch, var(--primary) 6%, transparent);
+}
+body.admin-ui .u-grid-span-full,
+body.admin-ui .meta-card.u-grid-span-full {
+  grid-column: 1 / -1;
+}
+body.admin-ui .meta-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+body.admin-ui .meta-value {
+  font-size: 0.9rem;
+  color: var(--foreground);
+  font-weight: 500;
+}
+
+/* ──────────────────────────────────────
+   PILL-STATUS (absensi table)
+   Alias dari status-pill agar blade lama jalan
+────────────────────────────────────── */
+body.admin-ui .pill-status {
+  min-height: 1.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--accent-foreground);
+  padding: 0 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+body.admin-ui .pill-status.ok {
+  background: color-mix(in oklch, var(--chart-2) 15%, transparent);
+  border-color: color-mix(in oklch, var(--chart-2) 35%, transparent);
+  color: var(--chart-2);
+}
+body.admin-ui .pill-status.warn {
+  background: color-mix(in oklch, var(--chart-4) 15%, transparent);
+  border-color: color-mix(in oklch, var(--chart-4) 35%, transparent);
+  color: var(--chart-4);
+}
+body.admin-ui .pill-status.err,
+body.admin-ui .pill-status.bad {
+  background: color-mix(in oklch, var(--destructive) 12%, transparent);
+  border-color: color-mix(in oklch, var(--destructive) 35%, transparent);
+  color: var(--destructive);
+}
+body.admin-ui .pill-status.off {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--muted-foreground);
+}
+
+/* ──────────────────────────────────────
+   BADGE (tambahan state)
+────────────────────────────────────── */
+body.admin-ui .badge.ok {
+  background: color-mix(in oklch, var(--chart-2) 15%, transparent);
+  border-color: color-mix(in oklch, var(--chart-2) 35%, transparent);
+  color: var(--chart-2);
+}
+body.admin-ui .badge.warn {
+  background: color-mix(in oklch, var(--chart-4) 15%, transparent);
+  border-color: color-mix(in oklch, var(--chart-4) 35%, transparent);
+  color: var(--chart-4);
+}
+body.admin-ui .badge.bad,
+body.admin-ui .badge.err {
+  background: color-mix(in oklch, var(--destructive) 12%, transparent);
+  border-color: color-mix(in oklch, var(--destructive) 35%, transparent);
+  color: var(--destructive);
+}
+
+/* ──────────────────────────────────────
+   ABSENSI — attendance table extras
+────────────────────────────────────── */
+body.admin-ui .row-click {
+  cursor: pointer;
+  transition: background 0.1s;
+}
+body.admin-ui .row-click:hover {
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+}
+body.admin-ui .tiny {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+body.admin-ui .thumb {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.25rem;
+  object-fit: cover;
+  border: 1px solid var(--border);
+  display: block;
+}
+body.admin-ui .u-text-muted {
+  color: var(--muted-foreground);
+  font-size: 0.8125rem;
+}
+
+/* ──────────────────────────────────────
+   ABSENSI — summary strip (4 cards atas panel)
+────────────────────────────────────── */
+body.admin-ui .attendance-summary-strip {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+}
+body.admin-ui .attendance-summary-card {
+  display: block;
+  padding: 0.875rem 1rem;
+  text-decoration: none;
+  color: var(--foreground);
+  border-right: 1px solid var(--border);
+  transition: background 0.12s;
+}
+body.admin-ui .attendance-summary-card:last-child {
+  border-right: none;
+}
+body.admin-ui .attendance-summary-card:hover {
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+}
+body.admin-ui .attendance-summary-card.is-active {
+  background: color-mix(in oklch, var(--primary) 6%, transparent);
+  border-bottom: 2px solid var(--primary);
+}
+body.admin-ui .attendance-summary-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.25rem;
+}
+body.admin-ui .attendance-summary-card strong {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--foreground);
+}
+body.admin-ui .attendance-summary-card small {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  margin-top: 0.125rem;
+  display: block;
+}
+
+/* ──────────────────────────────────────
+   ABSENSI — panel header
+────────────────────────────────────── */
+body.admin-ui .attendance-panel {
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 0.25rem);
+  background: var(--card);
+  overflow: hidden;
+}
+body.admin-ui .attendance-panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+body.admin-ui .attendance-panel-kicker {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+body.admin-ui .attendance-panel-title {
+  margin: 0;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+body.admin-ui .attendance-panel-sub {
+  margin-top: 0.25rem;
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+body.admin-ui .attendance-panel-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.25rem;
+  flex-shrink: 0;
+}
+body.admin-ui .attendance-total {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+body.admin-ui .attendance-hint {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+/* ──────────────────────────────────────
+   ABSENSI — quickbar shortcuts
+────────────────────────────────────── */
+body.admin-ui .quickbar-wrap {
+  margin-bottom: 0.875rem;
+}
+body.admin-ui .quickbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.625rem 0.875rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 0.25rem);
+  background: var(--card);
+}
+body.admin-ui .quickbar .label {
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+body.admin-ui .quickbar .spacer {
+  flex: 1;
+}
+body.admin-ui .shortcut {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.875rem;
+  padding: 0 0.625rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 0.8125rem;
+  text-decoration: none;
+  transition: background 0.1s, color 0.1s;
+}
+body.admin-ui .shortcut:hover {
+  background: var(--muted);
+}
+body.admin-ui .shortcut.is-hot {
+  background: color-mix(in oklch, var(--primary) 12%, transparent);
+  border-color: color-mix(in oklch, var(--primary) 40%, transparent);
+  color: var(--primary);
+  font-weight: 700;
+}
+body.admin-ui .btn-shareqr {
+  min-height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 0.875rem;
+  border-radius: var(--radius);
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 1px solid transparent;
+}
+body.admin-ui .btn-shareqr:hover {
+  opacity: 0.88;
+}
+
+/* filter-row layout */
+body.admin-ui .filter-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+body.admin-ui .filter-row .filters {
+  flex: 1;
+}
+body.admin-ui .settings-btn {
+  flex-shrink: 0;
+}
+
+/* ──────────────────────────────────────
+   WORKSPACE page
+────────────────────────────────────── */
+body.admin-ui .workspace-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 1.25rem;
+  align-items: start;
+}
+body.admin-ui .form-grid {
+  display: grid;
+  gap: 1rem;
+}
+body.admin-ui .field-card {
+  display: grid;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem;
+  border-radius: calc(var(--radius) + 0.25rem);
+  border: 1px solid var(--border);
+  background: var(--background);
+}
+body.admin-ui .mini-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 0.375rem;
+  margin-bottom: 0.125rem;
+}
+body.admin-ui .split-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.625rem;
+}
+body.admin-ui .hint {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  line-height: 1.4;
+  margin-top: 0.125rem;
+}
+body.admin-ui .switch-list {
+  display: grid;
+  gap: 0.625rem;
+}
+body.admin-ui .switch-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.875rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid color-mix(in oklch, var(--border) 60%, transparent);
+}
+body.admin-ui .switch-item:last-child {
+  border-bottom: none;
+}
+body.admin-ui .switch-item label {
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+body.admin-ui .switch-help {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  margin-top: 0.125rem;
+  line-height: 1.4;
+}
+body.admin-ui .toggle-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+body.admin-ui .setoran-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+body.admin-ui .setoran-subcard {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: color-mix(in oklch, var(--muted) 30%, transparent);
+}
+body.admin-ui .subhead {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0;
+}
+body.admin-ui .right-note {
+  display: grid;
+  gap: 0.5rem;
+}
+body.admin-ui .right-note .item {
+  font-size: 0.875rem;
+  color: var(--foreground);
+  padding: 0.5rem 0.625rem;
+  border-left: 3px solid color-mix(in oklch, var(--primary) 40%, transparent);
+  background: color-mix(in oklch, var(--muted) 30%, transparent);
+  border-radius: 0 var(--radius) var(--radius) 0;
+}
+body.admin-ui .save-wrap {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.5rem;
+}
+body.admin-ui .summary-table-wrap {
+  margin-top: 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+body.admin-ui .summary-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+body.admin-ui .summary-table th,
+body.admin-ui .summary-table td {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+}
+body.admin-ui .summary-table tr:last-child th,
+body.admin-ui .summary-table tr:last-child td {
+  border-bottom: none;
+}
+body.admin-ui .summary-table th {
+  background: var(--muted);
+  color: var(--muted-foreground);
+  font-weight: 700;
+  width: 45%;
+}
+body.admin-ui .pill-yes {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius);
+  background: color-mix(in oklch, var(--chart-2) 15%, transparent);
+  border: 1px solid color-mix(in oklch, var(--chart-2) 40%, transparent);
+  color: var(--chart-2);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+body.admin-ui .pill-no {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius);
+  background: var(--muted);
+  border: 1px solid var(--border);
+  color: var(--muted-foreground);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+body.admin-ui .panel-title {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+body.admin-ui .panel-title-sm {
+  font-size: 0.9rem;
+}
+body.admin-ui .panel-desc {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  margin: 0 0 0.875rem;
+}
+body.admin-ui .panel-desc-tight {
+  margin-bottom: 0.375rem;
+}
+body.admin-ui .actions {
+  display: flex;
+  gap: 0.625rem;
+}
+
+/* ──────────────────────────────────────
+   KEUANGAN page
+────────────────────────────────────── */
+body.admin-ui .admin-grid-secondary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.875rem;
+  margin-bottom: 1.25rem;
+}
+body.admin-ui .value-sm {
+  font-size: 1rem !important;
+  line-height: 1.4 !important;
+}
+body.admin-ui .setor-form {
+  margin-bottom: 0;
+}
+body.admin-ui .setor-form .row {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+}
+body.admin-ui .setor-form .row input {
+  flex: 1;
+  min-width: 140px;
+}
+body.admin-ui .form-inline {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+  margin-bottom: 1rem;
+}
+body.admin-ui .form-inline .col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 140px;
+}
+body.admin-ui .tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  background: var(--muted);
+  color: var(--muted-foreground);
+}
+body.admin-ui .tag.koreksi {
+  background: color-mix(in oklch, var(--chart-4) 15%, transparent);
+  border-color: color-mix(in oklch, var(--chart-4) 40%, transparent);
+  color: var(--chart-4);
+}
+body.admin-ui .tag.normal {
+  background: color-mix(in oklch, var(--chart-2) 12%, transparent);
+  border-color: color-mix(in oklch, var(--chart-2) 30%, transparent);
+  color: var(--chart-2);
+}
+body.admin-ui .tag.portal {
+  background: color-mix(in oklch, var(--chart-1) 12%, transparent);
+  border-color: color-mix(in oklch, var(--chart-1) 30%, transparent);
+  color: var(--chart-1);
+}
+body.admin-ui td.minus {
+  color: var(--destructive);
+}
+body.admin-ui td.plus {
+  color: var(--chart-2);
+}
+body.admin-ui .modal-title {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0 0 0.25rem;
+}
+body.admin-ui .modal-sub {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  margin: 0 0 0.875rem;
+}
+body.admin-ui .btn-sm {
+  min-height: 1.875rem !important;
+  padding: 0 0.625rem !important;
+  font-size: 0.8rem !important;
+}
+body.admin-ui .pages {
+  padding: 0.875rem 0 0;
+}
+
+/* ──────────────────────────────────────
+   SHARE-QR page
+────────────────────────────────────── */
+body.admin-ui .admin-soft-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.875rem;
+  margin-bottom: 1rem;
+}
+body.admin-ui .admin-soft-card .title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.25rem;
+}
+body.admin-ui .admin-soft-card .meta {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+body.admin-ui .qr {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+body.admin-ui .qr-frame {
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border: 2px solid var(--border);
+  background: #fff;
+  display: inline-flex;
+}
+body.admin-ui .qr-frame img {
+  display: block;
+  width: 200px;
+  height: 200px;
+}
+body.admin-ui .linkline {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: color-mix(in oklch, var(--muted) 40%, transparent);
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+body.admin-ui .linkpill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  flex-shrink: 0;
+}
+body.admin-ui .linktext {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+body.admin-ui .copied {
+  display: none;
+  font-size: 0.8125rem;
+  color: var(--chart-2);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+body.admin-ui .copied.show {
+  display: block;
+}
+body.admin-ui .btn-row {
+  display: flex;
+  gap: 0.5rem;
+}
+body.admin-ui .hint {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  margin-top: 0.875rem;
+}
+
+/* copy modal */
+body.admin-ui .copy-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  padding: 1rem;
+}
+body.admin-ui .copy-modal.show {
+  display: flex;
+}
+body.admin-ui .copy-card {
+  width: 100%;
+  max-width: 28rem;
+  border-radius: calc(var(--radius) + 0.375rem);
+  border: 1px solid var(--border);
+  background: var(--card);
+  padding: 1.5rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+body.admin-ui .copy-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.375rem;
+}
+body.admin-ui .copy-sub {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+body.admin-ui .copy-field {
+  margin-bottom: 1rem;
+}
+body.admin-ui .copy-input {
+  width: 100%;
+  min-height: 2.5rem;
+  border: 1px solid var(--input);
+  border-radius: var(--radius);
+  background: var(--background);
+  color: var(--foreground);
+  padding: 0 0.75rem;
+  font-size: 0.875rem;
+}
+body.admin-ui .copy-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ──────────────────────────────────────
+   ABSENSI SETTINGS page
+────────────────────────────────────── */
+body.admin-ui .geo-inline {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+body.admin-ui .geo-readout {
+  font-size: 0.8125rem;
+  color: var(--foreground);
+  font-weight: 600;
+  padding: 0.375rem 0.625rem;
+  border-radius: var(--radius);
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+  border: 1px solid var(--border);
+}
+body.admin-ui .geo-map-note {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  margin-top: 0.375rem;
+  line-height: 1.4;
+}
+body.admin-ui .geo-tools {
+  padding: 0.625rem 0;
+  display: grid;
+  gap: 0.375rem;
+}
+body.admin-ui .geo-map {
+  width: 100%;
+  height: 300px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  margin: 0.5rem 0;
+}
+body.admin-ui .geo-map.is-empty {
+  background: color-mix(in oklch, var(--muted) 40%, transparent);
+}
+body.admin-ui .is-hidden {
+  display: none !important;
+}
+
+/* toast */
+body.admin-ui .toast {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  min-width: 220px;
+  max-width: 320px;
+  padding: 0.875rem 1.125rem;
+  border-radius: calc(var(--radius) + 0.25rem);
+  border: 1px solid var(--border);
+  background: var(--card);
+  color: var(--foreground);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: none;
+  gap: 0.25rem;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+body.admin-ui .toast.show {
+  display: grid;
+  opacity: 1;
+  transform: translateY(0);
+}
+body.admin-ui .toast small {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: var(--muted-foreground);
+}
+
+/* modal-backdrop as absensi-settings geo modal */
+body.admin-ui #geo-modal.modal-backdrop {
+  align-items: flex-start;
+  padding-top: 5vh;
+}
+body.admin-ui #geo-modal .modal-card {
+  max-width: 42rem;
+}
+
+/* ──────────────────────────────────────
+   ALERT (global admin)
+────────────────────────────────────── */
+body.admin-ui .alert {
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+  margin-bottom: 0.875rem;
+  border: 1px solid transparent;
+}
+body.admin-ui .alert.ok {
+  background: color-mix(in oklch, var(--chart-2) 12%, transparent);
+  border-color: color-mix(in oklch, var(--chart-2) 35%, transparent);
+  color: var(--chart-2);
+}
+body.admin-ui .alert.err {
+  background: color-mix(in oklch, var(--destructive) 10%, transparent);
+  border-color: color-mix(in oklch, var(--destructive) 35%, transparent);
+  color: var(--destructive);
+}
+
+/* ──────────────────────────────────────
+   UNIVERSAL UTILS (u-* classes)
+────────────────────────────────────── */
+body.admin-ui .u-flex       { display: flex; }
+body.admin-ui .u-grid       { display: grid; }
+body.admin-ui .u-gap-6      { gap: 0.375rem; }
+body.admin-ui .u-gap-8      { gap: 0.5rem; }
+body.admin-ui .u-gap-10     { gap: 0.625rem; }
+body.admin-ui .u-mt-0       { margin-top: 0; }
+body.admin-ui .u-mt-4       { margin-top: 0.25rem; }
+body.admin-ui .u-mt-6       { margin-top: 0.375rem; }
+body.admin-ui .u-mt-14      { margin-top: 0.875rem; }
+body.admin-ui .u-mb-8       { margin-bottom: 0.5rem; }
+body.admin-ui .u-mb-14      { margin-bottom: 0.875rem; }
+body.admin-ui .u-m-0        { margin: 0; }
+body.admin-ui .u-text-sm    { font-size: 0.8125rem; }
+body.admin-ui .u-text-muted { color: var(--muted-foreground); }
+body.admin-ui .u-font-700   { font-weight: 700; }
+body.admin-ui .u-input-sm   { max-width: 160px; }
+body.admin-ui .u-input-md   { max-width: 260px; }
+body.admin-ui .u-input-lg   { flex: 1; min-width: 0; }
+body.admin-ui .u-align-center { align-items: center; }
+body.admin-ui .u-justify-end  { justify-content: flex-end; }
+body.admin-ui .u-flex-wrap    { flex-wrap: wrap; }
+body.admin-ui .u-minw-220     { min-width: 220px; }
+body.admin-ui .u-grid-span-full { grid-column: 1 / -1; }
+
+/* ──────────────────────────────────────
+   RESPONSIVE
+────────────────────────────────────── */
+@media (max-width: 1100px) {
+  body.admin-ui .workspace-grid {
+    grid-template-columns: 1fr;
+  }
+  body.admin-ui .admin-grid-secondary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  body.admin-ui .attendance-summary-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  body.admin-ui .meta-grid {
+    grid-template-columns: 1fr;
+  }
+}
+@media (max-width: 640px) {
+  body.admin-ui .workspace-grid,
+  body.admin-ui .split-2,
+  body.admin-ui .setoran-grid {
+    grid-template-columns: 1fr;
+  }
+  body.admin-ui .admin-grid-secondary,
+  body.admin-ui .attendance-summary-strip {
+    grid-template-columns: 1fr;
+  }
+  body.admin-ui .setor-form .row,
+  body.admin-ui .form-inline,
+  body.admin-ui .btn-row,
+  body.admin-ui .filter-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
+
+/* ══════════════════════════════════════════════
+   JADWAL page
+══════════════════════════════════════════════ */
+body.admin-ui .split {
+  display: grid;
+  grid-template-columns: 1fr minmax(280px, 360px);
+  gap: 1rem;
+  align-items: start;
+}
+body.admin-ui .panel.toolbar {
+  padding: 0.75rem 1rem;
+}
+body.admin-ui .monthbar {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+}
+body.admin-ui .krs-shortcut {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.875rem 1rem;
+  flex-wrap: wrap;
+}
+body.admin-ui .krs-title {
+  margin: 0 0 0.25rem;
+  font-size: 0.9375rem;
+  font-weight: 700;
+}
+body.admin-ui .krs-desc {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+body.admin-ui .krs-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+}
+body.admin-ui .krs-status {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  background: var(--muted);
+  color: var(--muted-foreground);
+}
+body.admin-ui .krs-status.ok {
+  background: color-mix(in oklch, var(--chart-2) 15%, transparent);
+  border-color: color-mix(in oklch, var(--chart-2) 35%, transparent);
+  color: var(--chart-2);
+}
+body.admin-ui .krs-status.warn {
+  background: color-mix(in oklch, var(--chart-4) 15%, transparent);
+  border-color: color-mix(in oklch, var(--chart-4) 35%, transparent);
+  color: var(--chart-4);
+}
+
+/* legend & seg nav */
+body.admin-ui .modebar .left,
+body.admin-ui .modebar .right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+body.admin-ui .seg {
+  display: inline-flex;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+body.admin-ui .seg a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--foreground);
+  text-decoration: none;
+  background: var(--background);
+  border-right: 1px solid var(--border);
+  transition: background 0.1s;
+}
+body.admin-ui .seg a:last-child { border-right: none; }
+body.admin-ui .seg a:hover { background: var(--muted); }
+body.admin-ui .seg a.active {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+body.admin-ui .legend {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+}
+body.admin-ui .legend .lg {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+body.admin-ui .hinttext {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  font-style: italic;
+}
+body.admin-ui .etype {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.3rem;
+  border-radius: 3px;
+  font-size: 0.65rem;
+  font-weight: 900;
+  line-height: 1.3;
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+body.admin-ui .etype.ft {
+  background: color-mix(in oklch, var(--chart-2) 18%, transparent);
+  color: var(--chart-2);
+  border: 1px solid color-mix(in oklch, var(--chart-2) 30%, transparent);
+}
+body.admin-ui .etype.pt {
+  background: color-mix(in oklch, var(--chart-4) 18%, transparent);
+  color: var(--chart-4);
+  border: 1px solid color-mix(in oklch, var(--chart-4) 30%, transparent);
+}
+body.admin-ui .employment.ft { color: var(--chart-2); }
+body.admin-ui .employment.pt { color: var(--chart-4); }
+
+/* calendar */
+body.admin-ui .cal-wrap {
+  display: grid;
+  gap: 2px;
+  margin-top: 0.75rem;
+}
+body.admin-ui .cal-head {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 2px;
+}
+body.admin-ui .cal-head > div {
+  text-align: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  padding: 0.25rem 0;
+  text-transform: uppercase;
+}
+body.admin-ui .cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+body.admin-ui .day {
+  min-height: 6rem;
+  padding: 0.375rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--card);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  overflow: hidden;
+}
+body.admin-ui .day.muted {
+  background: color-mix(in oklch, var(--muted) 30%, transparent);
+  opacity: 0.45;
+  pointer-events: none;
+}
+body.admin-ui .day.weekend {
+  background: color-mix(in oklch, var(--chart-4) 4%, transparent);
+}
+body.admin-ui .day.today {
+  border-color: color-mix(in oklch, var(--primary) 60%, transparent);
+  background: color-mix(in oklch, var(--primary) 4%, transparent);
+}
+body.admin-ui .day-link {
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.1s, border-color 0.1s;
+}
+body.admin-ui .day-link:hover {
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+  border-color: color-mix(in oklch, var(--primary) 40%, transparent);
+}
+body.admin-ui .day .top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.25rem;
+}
+body.admin-ui .day .num {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--foreground);
+  text-align: left;
+}
+body.admin-ui .day .meta {
+  font-size: 0.65rem;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+}
+body.admin-ui .count-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.375rem;
+  border-radius: 999px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+body.admin-ui .shifts { display: grid; gap: 2px; }
+body.admin-ui .shift-row {
+  display: grid;
+  grid-template-columns: 20px 1fr;
+  gap: 3px;
+  align-items: start;
+}
+body.admin-ui .slabel {
+  font-size: 0.6rem;
+  font-weight: 900;
+  color: var(--muted-foreground);
+  padding-top: 2px;
+}
+body.admin-ui .slabel.s1 { color: hsl(220, 70%, 55%); }
+body.admin-ui .slabel.s2 { color: hsl(340, 65%, 50%); }
+body.admin-ui .slabel.s3 { color: hsl(30, 80%, 50%); }
+body.admin-ui .scontent { display: flex; flex-direction: column; gap: 2px; }
+body.admin-ui .chip {
+  display: inline-flex;
+  flex-direction: column;
+  border-radius: 4px;
+  font-size: 0.65rem;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--background);
+}
+body.admin-ui .chip.empty {
+  color: var(--muted-foreground);
+  padding: 1px 4px;
+}
+body.admin-ui .chip.more {
+  background: var(--muted);
+  color: var(--muted-foreground);
+  padding: 1px 5px;
+  align-items: center;
+}
+body.admin-ui .chip.staff.ft { border-color: color-mix(in oklch, var(--chart-2) 30%, transparent); }
+body.admin-ui .chip.staff.pt { border-color: color-mix(in oklch, var(--chart-4) 30%, transparent); }
+body.admin-ui .chip-head {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px 4px;
+}
+body.admin-ui .chip-name {
+  font-weight: 600;
+  color: var(--foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 80px;
+}
+body.admin-ui .chip-meta {
+  padding: 1px 4px 2px;
+  border-top: 1px solid color-mix(in oklch, var(--border) 60%, transparent);
+  color: var(--muted-foreground);
+  font-size: 0.6rem;
+}
+body.admin-ui .dot.s1 { background: hsl(220, 70%, 55%); }
+body.admin-ui .dot.s2 { background: hsl(340, 65%, 50%); }
+body.admin-ui .dot.s3 { background: hsl(30, 80%, 50%); }
+
+/* name-pill (list mode) */
+body.admin-ui .names {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+body.admin-ui .name-pill {
+  display: inline-flex;
+  flex-direction: column;
+  padding: 4px 6px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--background);
+  font-size: 0.75rem;
+  gap: 2px;
+  max-width: 200px;
+}
+body.admin-ui .name-pill.ft { border-color: color-mix(in oklch, var(--chart-2) 30%, transparent); }
+body.admin-ui .name-pill.pt { border-color: color-mix(in oklch, var(--chart-4) 30%, transparent); }
+body.admin-ui .name-pill-head {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+body.admin-ui .name-main { font-weight: 600; }
+body.admin-ui .name-pill small {
+  color: var(--muted-foreground);
+  font-size: 0.65rem;
+}
+body.admin-ui .shift-badge {
+  display: inline-block;
+  padding: 1px 6px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  border: 1px solid var(--border);
+}
+
+/* rekap employee rows */
+body.admin-ui .employee-meta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  margin-top: 2px;
+  flex-wrap: wrap;
+}
+body.admin-ui .emp-row { cursor: default; }
+body.admin-ui .emp-detail td {
+  padding-top: 0;
+  padding-bottom: 0.5rem;
+}
+body.admin-ui .rekap-bar {
+  height: 6px;
+  border-radius: 999px;
+  background: var(--muted);
+  overflow: hidden;
+  margin-bottom: 3px;
+}
+body.admin-ui .rekap-bar span {
+  display: block;
+  height: 100%;
+  background: var(--chart-2);
+  border-radius: 999px;
+  transition: width 0.3s;
+}
+body.admin-ui .rekap-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+body.admin-ui .rekap-meta .pct {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--chart-2);
+}
+body.admin-ui .panel-tools {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+body.admin-ui input.search {
+  min-height: 2rem;
+  padding: 0 0.625rem;
+  font-size: 0.8125rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--input);
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* roster modal */
+body.admin-ui .roster-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s;
+}
+body.admin-ui .roster-modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+body.admin-ui .roster-sheet {
+  width: 100%;
+  max-width: 520px;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: 1rem 1rem 0 0;
+  background: var(--card);
+  border: 1px solid var(--border);
+  box-shadow: 0 -8px 40px rgba(0,0,0,0.25);
+  transform: translateY(16px);
+  transition: transform 0.18s;
+}
+body.admin-ui .roster-modal.open .roster-sheet {
+  transform: translateY(0);
+}
+body.admin-ui .roster-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+body.admin-ui .roster-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+body.admin-ui .roster-sub {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  margin-top: 0.125rem;
+}
+body.admin-ui .roster-x {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--muted);
+  color: var(--foreground);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body.admin-ui .roster-body {
+  padding: 1rem 1.25rem;
+  display: grid;
+  gap: 0.875rem;
+}
+body.admin-ui .roster-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.875rem 1.25rem;
+  border-top: 1px solid var(--border);
+}
+body.admin-ui .roster-block { display: grid; gap: 0.5rem; }
+body.admin-ui .roster-block .h {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+body.admin-ui .roster-block .h .left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+body.admin-ui .roster-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  border: 1px solid var(--border);
+}
+body.admin-ui .roster-badge.s1 { background: hsl(220,70%,55%/0.15); color: hsl(220,70%,55%); border-color: hsl(220,70%,55%/0.3); }
+body.admin-ui .roster-badge.s2 { background: hsl(340,65%,50%/0.15); color: hsl(340,65%,50%); border-color: hsl(340,65%,50%/0.3); }
+body.admin-ui .roster-badge.s3 { background: hsl(30,80%,50%/0.15); color: hsl(30,80%,50%); border-color: hsl(30,80%,50%/0.3); }
+body.admin-ui .roster-count {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+body.admin-ui .roster-names { display: grid; gap: 0.375rem; }
+body.admin-ui .roster-name-card {
+  display: grid;
+  gap: 0.125rem;
+  padding: 0.5rem 0.625rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--background);
+}
+body.admin-ui .roster-name-card.ft { border-color: color-mix(in oklch, var(--chart-2) 30%, transparent); }
+body.admin-ui .roster-name-card.pt { border-color: color-mix(in oklch, var(--chart-4) 30%, transparent); }
+body.admin-ui .roster-name-top {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+body.admin-ui .roster-name-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+body.admin-ui .roster-name-meta {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+
+/* tabs */
+body.admin-ui .tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+body.admin-ui .tabs a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.5rem;
+  padding: 0 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.1s, border-color 0.1s;
+  white-space: nowrap;
+}
+body.admin-ui .tabs a:hover { color: var(--foreground); }
+body.admin-ui .tabs a.active {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+body.admin-ui .tab-on.active { color: var(--chart-2); border-bottom-color: var(--chart-2); }
+body.admin-ui .tab-info.active { color: var(--chart-4); border-bottom-color: var(--chart-4); }
+body.admin-ui .tab-off.active { color: var(--muted-foreground); border-bottom-color: var(--muted-foreground); }
+
+/* misc utils */
+body.admin-ui .u-pt-0 { padding-top: 0 !important; }
+body.admin-ui .u-w-120 { width: 120px; }
+body.admin-ui .u-w-140 { width: 140px; }
+body.admin-ui .u-w-160 { width: 160px; }
+body.admin-ui .u-w-110 { width: 110px; }
+body.admin-ui .u-w-200 { width: 200px; }
+body.admin-ui .u-mt-10 { margin-top: 0.625rem; }
+body.admin-ui .u-mt-12 { margin-top: 0.75rem; }
+body.admin-ui .u-mt-2  { margin-top: 0.125rem; }
+body.admin-ui .u-p-18  { padding: 1.125rem; }
+body.admin-ui .u-p-14  { padding: 0.875rem; }
+body.admin-ui .u-text-center { text-align: center; }
+body.admin-ui .u-pre-line { white-space: pre-line; }
+body.admin-ui .u-inline { display: inline; }
+body.admin-ui .note {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.875rem;
+}
+
+/* ══════════════════════════════════════════════
+   SWAP REQUESTS modal
+══════════════════════════════════════════════ */
+body.admin-ui .swap-admin-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s;
+}
+body.admin-ui .swap-admin-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+body.admin-ui .swap-admin-card {
+  width: 100%;
+  max-width: 32rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: calc(var(--radius) + 0.375rem);
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  transform: translateY(10px) scale(0.98);
+  transition: transform 0.18s;
+}
+body.admin-ui .swap-admin-modal.show .swap-admin-card {
+  transform: translateY(0) scale(1);
+}
+body.admin-ui .swap-admin-head {
+  padding: 1.125rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+body.admin-ui .swap-admin-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+body.admin-ui .swap-admin-sub {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  margin-top: 0.125rem;
+}
+body.admin-ui .swap-admin-body {
+  padding: 1.125rem 1.5rem;
+  display: grid;
+  gap: 0.875rem;
+}
+body.admin-ui .swap-admin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.625rem;
+}
+body.admin-ui .swap-admin-row {
+  display: grid;
+  gap: 0.25rem;
+}
+body.admin-ui .swap-admin-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+body.admin-ui .swap-admin-value {
+  font-size: 0.9rem;
+  color: var(--foreground);
+  font-weight: 500;
+}
+body.admin-ui .swap-admin-note-block {
+  font-size: 0.875rem;
+  color: var(--foreground);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  background: color-mix(in oklch, var(--muted) 40%, transparent);
+  border: 1px solid var(--border);
+  white-space: pre-line;
+}
+body.admin-ui .swap-admin-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--muted);
+  color: var(--muted-foreground);
+  border: 1px solid var(--border);
+}
+body.admin-ui .swap-admin-badge.is-pending {
+  background: color-mix(in oklch, var(--chart-4) 15%, transparent);
+  border-color: color-mix(in oklch, var(--chart-4) 35%, transparent);
+  color: var(--chart-4);
+}
+body.admin-ui .swap-admin-badge.is-approved {
+  background: color-mix(in oklch, var(--chart-2) 15%, transparent);
+  border-color: color-mix(in oklch, var(--chart-2) 35%, transparent);
+  color: var(--chart-2);
+}
+body.admin-ui .swap-admin-badge.is-rejected {
+  background: color-mix(in oklch, var(--destructive) 12%, transparent);
+  border-color: color-mix(in oklch, var(--destructive) 35%, transparent);
+  color: var(--destructive);
+}
+body.admin-ui .swap-admin-respond {
+  padding: 0 1.5rem;
+  display: grid;
+  gap: 0.5rem;
+}
+body.admin-ui .swap-admin-respond textarea {
+  width: 100%;
+  min-height: 5rem;
+  resize: vertical;
+  padding: 0.5rem 0.75rem;
+}
+body.admin-ui .swap-admin-respond .actions {
+  display: flex;
+  gap: 0.5rem;
+}
+body.admin-ui .swap-admin-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  border-top: 1px solid var(--border);
+  justify-content: flex-end;
+}
+/* status badge for swap table */
+body.admin-ui .status.pending {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: color-mix(in oklch, var(--chart-4) 15%, transparent);
+  border: 1px solid color-mix(in oklch, var(--chart-4) 35%, transparent);
+  color: var(--chart-4);
+}
+body.admin-ui .status.approved {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: color-mix(in oklch, var(--chart-2) 15%, transparent);
+  border: 1px solid color-mix(in oklch, var(--chart-2) 35%, transparent);
+  color: var(--chart-2);
+}
+body.admin-ui .status.rejected, body.admin-ui .status.inactive {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: color-mix(in oklch, var(--destructive) 12%, transparent);
+  border: 1px solid color-mix(in oklch, var(--destructive) 35%, transparent);
+  color: var(--destructive);
+}
+body.admin-ui .status.active {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: color-mix(in oklch, var(--chart-2) 15%, transparent);
+  border: 1px solid color-mix(in oklch, var(--chart-2) 35%, transparent);
+  color: var(--chart-2);
+}
+body.admin-ui .status.warn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: color-mix(in oklch, var(--chart-4) 15%, transparent);
+  border: 1px solid color-mix(in oklch, var(--chart-4) 35%, transparent);
+  color: var(--chart-4);
+}
+body.admin-ui .page-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+body.admin-ui .btn-mini {
+  min-height: 1.875rem !important;
+  padding: 0 0.625rem !important;
+  font-size: 0.8rem !important;
+  border-radius: var(--radius) !important;
+}
+body.admin-ui .sub {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  margin-top: 2px;
+}
+
+/* ══════════════════════════════════════════════
+   PAYROLL page
+══════════════════════════════════════════════ */
+body.admin-ui .kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.875rem;
+}
+body.admin-ui .kpi {
+  padding: 1rem;
+  border-radius: calc(var(--radius) + 0.25rem);
+  border: 1px solid var(--border);
+  background: var(--card);
+  display: grid;
+  gap: 0.25rem;
+}
+body.admin-ui .kpi.gray { background: color-mix(in oklch, var(--muted) 50%, transparent); }
+body.admin-ui .kpi.blue {
+  background: hsl(220, 70%, 50% / 0.08);
+  border-color: hsl(220, 70%, 50% / 0.25);
+}
+body.admin-ui .kpi .label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+body.admin-ui .kpi .value {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.3;
+  margin-top: 0;
+}
+body.admin-ui .kpi .sub {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  line-height: 1.4;
+  margin-top: 0;
+}
+body.admin-ui .payroll-panel-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.875rem;
+  padding-bottom: 0.875rem;
+  border-bottom: 1px solid var(--border);
+}
+body.admin-ui .payroll-panel-head h2 {
+  margin: 0 0 0.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+}
+body.admin-ui .payroll-panel-head p {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+body.admin-ui .payroll-policy-summary {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.625rem;
+  margin-bottom: 1rem;
+}
+body.admin-ui .payroll-policy-card {
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--background);
+  display: grid;
+  gap: 0.25rem;
+}
+body.admin-ui .payroll-policy-card span {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+body.admin-ui .payroll-policy-card strong {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+body.admin-ui .payroll-policy-card p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  line-height: 1.4;
+}
+body.admin-ui .payroll-policy-form {
+  margin-bottom: 1.25rem;
+  padding: 1rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--background);
+}
+body.admin-ui .field {
+  display: grid;
+  gap: 0.375rem;
+}
+body.admin-ui .actions.full {
+  justify-content: flex-end;
+  padding-top: 0.25rem;
+}
+body.admin-ui .payroll-legend {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  flex-shrink: 0;
+}
+/* pill (payroll + leave) */
+body.admin-ui .pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 700;
+  border: 1px solid var(--border);
+  background: var(--muted);
+  color: var(--muted-foreground);
+}
+body.admin-ui .pill.ok {
+  background: color-mix(in oklch, var(--chart-2) 15%, transparent);
+  border-color: color-mix(in oklch, var(--chart-2) 35%, transparent);
+  color: var(--chart-2);
+}
+body.admin-ui .pill.warn {
+  background: color-mix(in oklch, var(--chart-4) 15%, transparent);
+  border-color: color-mix(in oklch, var(--chart-4) 35%, transparent);
+  color: var(--chart-4);
+}
+body.admin-ui .pill.bad {
+  background: color-mix(in oklch, var(--destructive) 12%, transparent);
+  border-color: color-mix(in oklch, var(--destructive) 35%, transparent);
+  color: var(--destructive);
+}
+body.admin-ui .pill.gray {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--muted-foreground);
+}
+body.admin-ui .pill.neu {
+  background: var(--accent);
+  border-color: var(--border);
+  color: var(--accent-foreground);
+}
+body.admin-ui .pill.blue {
+  background: hsl(220,70%,50%/0.12);
+  border-color: hsl(220,70%,50%/0.3);
+  color: hsl(220,70%,50%);
+}
+/* payroll employee card */
+body.admin-ui .payroll-employee {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+}
+body.admin-ui .payroll-avatar {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.875rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+body.admin-ui .payroll-employee span {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+body.admin-ui .payroll-count-grid {
+  display: grid;
+  gap: 2px;
+  font-size: 0.8125rem;
+}
+body.admin-ui .pin-help {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+body.admin-ui .payroll-month-filter {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+/* ══════════════════════════════════════════════
+   LEAVE modal
+══════════════════════════════════════════════ */
+body.admin-ui .leave-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.18s;
+}
+body.admin-ui .leave-modal.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+body.admin-ui .leave-card {
+  width: 100%;
+  max-width: 28rem;
+  border-radius: calc(var(--radius) + 0.375rem);
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+  transform: translateY(10px) scale(0.98);
+  transition: transform 0.18s;
+  overflow: hidden;
+}
+body.admin-ui .leave-modal.show .leave-card {
+  transform: translateY(0) scale(1);
+}
+body.admin-ui .leave-head {
+  padding: 1.125rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+}
+body.admin-ui .leave-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+body.admin-ui .leave-sub {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  margin-top: 0.125rem;
+}
+body.admin-ui .leave-body {
+  padding: 1rem 1.25rem;
+  display: grid;
+  gap: 0.75rem;
+}
+body.admin-ui .leave-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+body.admin-ui .leave-row {
+  display: grid;
+  gap: 0.2rem;
+}
+body.admin-ui .leave-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+body.admin-ui .leave-value {
+  font-size: 0.9rem;
+  color: var(--foreground);
+  font-weight: 500;
+}
+body.admin-ui .leave-note {
+  font-size: 0.875rem;
+  color: var(--foreground);
+  padding: 0.5rem 0.75rem;
+  background: color-mix(in oklch, var(--muted) 40%, transparent);
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  white-space: pre-line;
+  grid-column: 1/-1;
+}
+body.admin-ui .leave-actions {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.875rem 1.25rem;
+  border-top: 1px solid var(--border);
+  justify-content: flex-end;
+}
+body.admin-ui .clickable-row { cursor: pointer; }
+body.admin-ui .clickable-row:hover { background: color-mix(in oklch, var(--muted) 40%, transparent); }
+
+/* ══════════════════════════════════════════════
+   ANNOUNCEMENTS page
+══════════════════════════════════════════════ */
+body.admin-ui .panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+body.admin-ui .action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+}
+body.admin-ui .btn-neutral.danger {
+  border-color: color-mix(in oklch, var(--destructive) 40%, transparent);
+  color: var(--destructive);
+}
+body.admin-ui .btn-neutral.danger:hover {
+  background: color-mix(in oklch, var(--destructive) 10%, transparent);
+}
+body.admin-ui .actions-inline {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+/* announcement detail modal */
+body.admin-ui .detail-modal .modal-card {
+  max-width: 52rem;
+}
+body.admin-ui .detail-panel { display: grid; gap: 1rem; }
+body.admin-ui .detail-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+body.admin-ui .detail-title {
+  margin: 0 0 0.375rem;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+body.admin-ui .detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+}
+body.admin-ui .detail-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  color: var(--muted-foreground);
+}
+body.admin-ui .detail-pill.ok {
+  background: color-mix(in oklch, var(--chart-2) 12%, transparent);
+  border-color: color-mix(in oklch, var(--chart-2) 30%, transparent);
+  color: var(--chart-2);
+}
+body.admin-ui .detail-body {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--foreground);
+}
+body.admin-ui .detail-poster {
+  text-align: center;
+}
+body.admin-ui .detail-poster img {
+  max-width: 100%;
+  max-height: 360px;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  object-fit: contain;
+}
+body.admin-ui .detail-section h3 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+body.admin-ui .detail-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ══════════════════════════════════════════════
+   STAFF ACTIVITY page
+══════════════════════════════════════════════ */
+body.admin-ui .staff-activity-filter-form {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  padding: 0.75rem 1rem;
+}
+body.admin-ui .staff-activity-filter-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-width: 120px;
+}
+body.admin-ui .staff-activity-list {
+  display: grid;
+  gap: 0.75rem;
+}
+body.admin-ui .staff-activity-card {
+  padding: 1rem 1.25rem !important;
+}
+body.admin-ui .staff-activity-card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+body.admin-ui .staff-activity-avatar {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+body.admin-ui .staff-activity-copy {
+  flex: 1;
+  min-width: 0;
+}
+body.admin-ui .staff-activity-copy strong {
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+body.admin-ui .staff-activity-meta {
+  display: flex;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+  margin-top: 0.25rem;
+}
+body.admin-ui .staff-activity-meta span {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+}
+body.admin-ui .staff-activity-meta span + span::before {
+  content: "·";
+  margin-right: 0.375rem;
+}
+body.admin-ui .staff-activity-time {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+body.admin-ui .staff-activity-summary {
+  margin: 0 0 0.5rem;
+  font-size: 0.875rem;
+  color: var(--foreground);
+  line-height: 1.5;
+}
+body.admin-ui .staff-activity-tags {
+  display: flex;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+}
+body.admin-ui .staff-activity-tags .chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  border: 1px solid var(--border);
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+  color: var(--muted-foreground);
+}
+body.admin-ui .staff-activity-empty {
+  text-align: center;
+  color: var(--muted-foreground);
+  padding: 2rem !important;
+  font-size: 0.9375rem;
+}
+body.admin-ui .staff-activity-pagination {
+  padding: 0.5rem 1rem !important;
+}
+
+/* ══════════════════════════════════════════════
+   TRANSAKSI page
+══════════════════════════════════════════════ */
+
+/* Note strip bawah quick filter card */
+body.admin-ui .admin-section-card-note {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border);
+}
+body.admin-ui .admin-section-card-note p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  line-height: 1.5;
+}
+
+/* Card header dengan border-bottom */
+body.admin-ui .admin-card-header-bordered {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0;
+}
+
+/* Stats chips row (Total Data / Halaman / Per Halaman) */
+body.admin-ui .admin-stats-row {
+  padding: 0.875rem 0;
+  display: flex;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--border);
+}
+body.admin-ui .admin-stats-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.375rem 0.625rem;
+  background: var(--muted);
+  border-radius: var(--radius);
+  font-size: 0.8125rem;
+}
+body.admin-ui .admin-stats-chip span {
+  color: var(--muted-foreground);
+}
+body.admin-ui .admin-stats-chip strong {
+  color: var(--foreground);
+  font-weight: 600;
+}
+
+/* Filter form layout */
+body.admin-ui .admin-filter-form {
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--border);
+}
+body.admin-ui .admin-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  align-items: end;
+}
+body.admin-ui .admin-filter-grid label {
+  display: block;
+  margin-bottom: 0.375rem;
+}
+body.admin-ui .admin-filter-select {
+  width: 100%;
+}
+body.admin-ui .admin-filter-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Table right-aligned th */
+body.admin-ui .admin-table-th-right {
+  text-align: right;
+}
+
+/* Numeric money cell */
+body.admin-ui .admin-table .num.money {
+  text-align: right;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* Badge uppercase variant (metode bayar) */
+body.admin-ui .trx-badge-uppercase {
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+/* Empty state with icon */
+body.admin-ui .admin-table-empty-inner {
+  padding: 2rem;
+  text-align: center;
+}
+body.admin-ui .admin-table-empty-icon {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Pagination wrap */
+body.admin-ui .admin-pagination-wrap {
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+}
+body.admin-ui .admin-pagination-wrap .page-jump-form {
+  margin-top: 0.875rem;
+}
+
+/* Override Laravel Tailwind pagination — digantikan oleh custom view admin-pager */
+/* Lihat resources/views/vendor/pagination/tailwind.blade.php */
+
+@media (max-width: 640px) {
+  body.admin-ui .admin-filter-grid {
+    grid-template-columns: 1fr;
+  }
+  body.admin-ui .admin-filter-actions {
+    width: 100%;
+  }
+  body.admin-ui .admin-filter-actions .btn {
+    flex: 1;
+    justify-content: center;
+  }
+  body.admin-ui .admin-stats-row {
+    gap: 0.375rem;
+  }
+  body.admin-ui .admin-stats-chip {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+}
+
+
+body.admin-ui .quick-card {
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 0.25rem);
+  background: var(--card);
+  display: grid;
+  gap: 0.625rem;
+}
+body.admin-ui .quick-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+body.admin-ui .quick-filters {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+body.admin-ui .quick-btn {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0 0.875rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: var(--background);
+  color: var(--foreground);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+body.admin-ui .quick-btn:hover { background: var(--muted); }
+body.admin-ui .quick-btn.active-today, body.admin-ui .today-btn.active-today {
+  background: color-mix(in oklch, var(--chart-2) 15%, transparent);
+  border-color: color-mix(in oklch, var(--chart-2) 40%, transparent);
+  color: var(--chart-2);
+}
+body.admin-ui .quick-btn.active-yesterday, body.admin-ui .yesterday-btn.active-yesterday {
+  background: color-mix(in oklch, var(--chart-4) 15%, transparent);
+  border-color: color-mix(in oklch, var(--chart-4) 40%, transparent);
+  color: var(--chart-4);
+}
+body.admin-ui .btn-soft-green {
+  background: color-mix(in oklch, var(--chart-2) 10%, transparent) !important;
+  border-color: color-mix(in oklch, var(--chart-2) 30%, transparent) !important;
+  color: var(--chart-2) !important;
+}
+/* filter-card in transaksi */
+body.admin-ui .filter-card {
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.875rem;
+}
+body.admin-ui .filter-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.625rem;
+}
+body.admin-ui .filter-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+body.admin-ui .form { display: flex; align-items: flex-end; gap: 0.625rem; flex-wrap: wrap; }
+body.admin-ui .form .col { display: flex; flex-direction: column; gap: 0.25rem; min-width: 120px; }
+body.admin-ui .action-col { display: flex; align-items: flex-end; gap: 0.375rem; }
+body.admin-ui .summary-chips {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 0.625rem;
+}
+body.admin-ui .summary-chips .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.625rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+}
+/* method & status badges */
+body.admin-ui .method-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  color: var(--muted-foreground);
+}
+body.admin-ui .method-badge.cash { background: hsl(142,50%,45%/0.12); border-color: hsl(142,50%,45%/0.3); color: hsl(142,50%,45%); }
+body.admin-ui .method-badge.qris { background: hsl(220,70%,50%/0.12); border-color: hsl(220,70%,50%/0.3); color: hsl(220,70%,50%); }
+body.admin-ui .method-badge.debit { background: hsl(260,60%,55%/0.12); border-color: hsl(260,60%,55%/0.3); color: hsl(260,60%,55%); }
+body.admin-ui .method-badge.delivery { background: hsl(30,80%,50%/0.12); border-color: hsl(30,80%,50%/0.3); color: hsl(30,80%,50%); }
+body.admin-ui .status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius);
+  font-size: 0.75rem;
+  font-weight: 700;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  color: var(--muted-foreground);
+}
+body.admin-ui .status-badge.lunas { background: color-mix(in oklch, var(--chart-2) 12%, transparent); border-color: color-mix(in oklch, var(--chart-2) 30%, transparent); color: var(--chart-2); }
+body.admin-ui .status-badge.dibatalkan { background: color-mix(in oklch, var(--destructive) 12%, transparent); border-color: color-mix(in oklch, var(--destructive) 35%, transparent); color: var(--destructive); }
+body.admin-ui .money { font-weight: 700; font-size: 0.9rem; color: var(--foreground); }
+body.admin-ui .id-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius);
+  background: var(--muted);
+  border: 1px solid var(--border);
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-family: monospace;
+  color: var(--foreground);
+}
+body.admin-ui .kasir-cell { display: grid; gap: 2px; }
+body.admin-ui .kasir-main { display: flex; align-items: center; gap: 0.25rem; }
+body.admin-ui .kasir-submeta { font-size: 0.75rem; color: var(--muted-foreground); }
+body.admin-ui .admin-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+body.admin-ui .shift-meta {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.35rem;
+  border-radius: 3px;
+  background: var(--muted);
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+}
+body.admin-ui .aksi-group { display: flex; gap: 0.375rem; flex-wrap: wrap; }
+body.admin-ui form.inline { display: inline; }
+/* page jump */
+body.admin-ui .page-jump-wrap {
+  padding: 0.625rem 0 0;
+}
+body.admin-ui .page-jump-form {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+body.admin-ui .page-jump-form input[type="number"] {
+  width: 80px;
+}
+
+/* ══════════════════════════════════════════════
+   RESPONSIVE extras
+══════════════════════════════════════════════ */
+@media (max-width: 1100px) {
+  body.admin-ui .split { grid-template-columns: 1fr; }
+  body.admin-ui .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  body.admin-ui .payroll-policy-summary { grid-template-columns: repeat(2, 1fr); }
+  body.admin-ui .swap-admin-grid { grid-template-columns: 1fr; }
+  body.admin-ui .leave-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  body.admin-ui .kpi-grid { grid-template-columns: 1fr; }
+  body.admin-ui .cal-grid { grid-template-columns: repeat(7, 1fr); }
+  body.admin-ui .day { min-height: 4rem; }
+  body.admin-ui .quick-filters,
+  body.admin-ui .form,
+  body.admin-ui .monthbar { flex-direction: column; align-items: stretch; }
+  body.admin-ui .payroll-policy-summary { grid-template-columns: 1fr; }
+}
+
+
+/* ══════════════════════════════════════════════
+   MASTER DATA & SETTINGS — missing shared classes
+   Covers: produk, kategori, diskon, bundling,
+           karyawan, struk-setting, cafe-profile,
+           master-opsi-kasir
+══════════════════════════════════════════════ */
+
+/* ── Page head hero variants ── */
+body.admin-ui .hero-split {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+body.admin-ui .hero-side {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+body.admin-ui .hero-sub,
+body.admin-ui p.hero-sub {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  margin: 0.25rem 0 0;
+}
+/* Legacy .hero.top — map to admin-page-head style */
+body.admin-ui .hero.top {
+  margin-bottom: 1.25rem;
+}
+body.admin-ui .hero.top h1 {
+  margin: 0 0 0.25rem;
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+body.admin-ui .hero.top .sub {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* ── Button variants ── */
+body.admin-ui .btn-ghost {
+  min-height: 2.25rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: calc(var(--radius) + 0.125rem);
+  padding: 0 0.875rem;
+  text-decoration: none;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--foreground);
+}
+body.admin-ui .btn-ghost:hover {
+  background: var(--muted);
+}
+body.admin-ui .btn-mini {
+  min-height: 1.875rem !important;
+  padding: 0 0.625rem !important;
+  font-size: 0.8rem !important;
+  border-radius: var(--radius) !important;
+}
+body.admin-ui .btn-small {
+  min-height: 1.75rem;
+  padding: 0 0.625rem;
+  font-size: 0.8rem;
+  border-radius: var(--radius);
+}
+body.admin-ui .btn-soft-red {
+  background: color-mix(in oklch, var(--destructive) 10%, transparent) !important;
+  border-color: color-mix(in oklch, var(--destructive) 35%, transparent) !important;
+  color: var(--destructive) !important;
+}
+body.admin-ui .btn-soft-red:hover {
+  background: color-mix(in oklch, var(--destructive) 18%, transparent) !important;
+}
+
+/* ── Form panel & layout helpers ── */
+body.admin-ui .form-panel {
+  padding: 1.25rem 1.5rem;
+}
+body.admin-ui .form-panel > h1:first-child,
+body.admin-ui .form-panel > h2:first-child {
+  margin: 0 0 1rem;
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+/* form-grid overrides — .full spans both columns */
+body.admin-ui .form-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+body.admin-ui .form-grid .full {
+  grid-column: 1 / -1;
+}
+/* row2 — explicit 2-col grid inside forms */
+body.admin-ui .row2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.875rem;
+  grid-column: 1 / -1;
+}
+body.admin-ui .row3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.875rem;
+  grid-column: 1 / -1;
+}
+/* .field — wraps label + input inside form-grid */
+body.admin-ui .field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.375rem;
+}
+body.admin-ui .field.full {
+  grid-column: 1 / -1;
+}
+/* section-title — divider heading inside forms */
+body.admin-ui .section-title {
+  grid-column: 1 / -1;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.375rem 0;
+  border-bottom: 1px solid var(--border);
+  margin-top: 0.25rem;
+}
+/* .check — checkbox + label row */
+body.admin-ui .check {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--foreground);
+}
+body.admin-ui .check input[type="checkbox"] {
+  min-height: auto;
+  width: 1rem;
+  height: 1rem;
+  flex-shrink: 0;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+body.admin-ui .check-grid {
+  display: grid;
+  gap: 0.625rem;
+  margin-top: 0.375rem;
+}
+/* .checkline — checkbox + multi-line description */
+body.admin-ui .checkline {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.625rem;
+}
+body.admin-ui .checkline input[type="checkbox"] {
+  min-height: auto;
+  width: 1rem;
+  height: 1rem;
+  margin-top: 0.1875rem;
+  flex-shrink: 0;
+  accent-color: var(--primary);
+  cursor: pointer;
+}
+body.admin-ui .check-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+/* .aksi — action button group in table rows */
+body.admin-ui .aksi {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+}
+/* .panel-actions — right-side action area in panel-head */
+body.admin-ui .panel-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+/* ── pill color variants ── */
+body.admin-ui .pill.gray,
+body.admin-ui .pill.mid {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--muted-foreground);
+}
+body.admin-ui .pill.neu {
+  background: var(--accent);
+  border-color: var(--border);
+  color: var(--accent-foreground);
+}
+body.admin-ui .pill.off {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--muted-foreground);
+  opacity: 0.7;
+}
+/* badge on/off/wait (diskon) */
+body.admin-ui .badge.on {
+  background: color-mix(in oklch, var(--chart-2) 15%, transparent);
+  border-color: color-mix(in oklch, var(--chart-2) 35%, transparent);
+  color: var(--chart-2);
+}
+body.admin-ui .badge.off {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--muted-foreground);
+}
+body.admin-ui .badge.wait {
+  background: color-mix(in oklch, var(--chart-4) 15%, transparent);
+  border-color: color-mix(in oklch, var(--chart-4) 35%, transparent);
+  color: var(--chart-4);
+}
+/* dot status indicator (legend) */
+body.admin-ui .dot {
+  display: inline-block;
+  width: 0.5rem;
+  height: 0.5rem;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+body.admin-ui .dot.on  { background: var(--chart-2); }
+body.admin-ui .dot.off { background: var(--muted-foreground); }
+body.admin-ui .dot.wait { background: var(--chart-4); }
+
+/* ── Master/index specific ── */
+body.admin-ui .kpi {
+  padding: 1rem;
+  border-radius: calc(var(--radius) + 0.25rem);
+  border: 1px solid var(--border);
+  background: var(--card);
+  display: grid;
+  gap: 0.25rem;
+}
+body.admin-ui .kpi.gray  { background: color-mix(in oklch, var(--muted) 50%, transparent); }
+body.admin-ui .kpi.blue  { background: oklch(0.541 0.196 265.755 / 0.08); border-color: oklch(0.541 0.196 265.755 / 0.2); }
+body.admin-ui .kpi.red   { background: color-mix(in oklch, var(--destructive) 8%, transparent); border-color: color-mix(in oklch, var(--destructive) 20%, transparent); }
+body.admin-ui .kpi .kpi-label,
+body.admin-ui .kpi .label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0;
+}
+body.admin-ui .kpi .kpi-value,
+body.admin-ui .kpi .value {
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--foreground);
+  line-height: 1.3;
+  margin-top: 0;
+}
+body.admin-ui .kpi .kpi-note,
+body.admin-ui .kpi .sub {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  line-height: 1.4;
+  margin: 0;
+}
+/* Link-card grid (master index shortcut tiles) */
+body.admin-ui .admin-grid-secondary-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.625rem;
+}
+body.admin-ui .link-card {
+  display: block;
+  padding: 0.875rem 1rem;
+  border-radius: calc(var(--radius) + 0.125rem);
+  border: 1px solid var(--border);
+  background: var(--background);
+  text-decoration: none;
+  color: var(--foreground);
+  transition: background 0.12s, border-color 0.12s;
+}
+body.admin-ui .link-card:hover {
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+  border-color: color-mix(in oklch, var(--primary) 35%, transparent);
+}
+body.admin-ui .link-title {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: 0.25rem;
+}
+body.admin-ui .link-desc {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  line-height: 1.4;
+}
+
+/* ── Produk/diskon specific ── */
+body.admin-ui .opt-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.4rem;
+  border-radius: var(--radius);
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: color-mix(in oklch, var(--accent) 50%, transparent);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  margin-right: 0.2rem;
+}
+body.admin-ui .period-line {
+  font-size: 0.8125rem;
+  color: var(--foreground);
+}
+body.admin-ui .empty-state {
+  text-align: center;
+  padding: 2rem 1rem;
+  color: var(--muted-foreground);
+  font-size: 0.9375rem;
+  display: grid;
+  gap: 0.75rem;
+  justify-items: center;
+}
+body.admin-ui .note {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.875rem;
+  line-height: 1.5;
+}
+
+/* ── Bundling item rows ── */
+body.admin-ui .item-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  flex-wrap: wrap;
+}
+body.admin-ui .item-row select { flex: 2; min-width: 140px; }
+body.admin-ui .item-row input[type="number"] { flex: 0 0 80px; width: 80px; }
+body.admin-ui .items { display: grid; gap: 0.375rem; margin-bottom: 0.5rem; }
+
+/* ── Struk-setting specific ── */
+body.admin-ui .layout {
+  display: grid;
+  grid-template-columns: 1fr minmax(200px, 280px);
+  gap: 1.25rem;
+  align-items: start;
+}
+body.admin-ui .template-box {
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 0.125rem);
+  background: color-mix(in oklch, var(--muted) 30%, transparent);
+  display: grid;
+  gap: 0.75rem;
+}
+body.admin-ui .template-title {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+body.admin-ui .admin-grid-secondary-check {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.5rem;
+  margin-top: 0.375rem;
+}
+/* Struk preview panel */
+body.admin-ui .panel.preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1.25rem !important;
+  font-family: monospace;
+  font-size: 0.8125rem;
+  text-align: center;
+  color: var(--foreground);
+}
+body.admin-ui .panel.preview h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+}
+body.admin-ui .panel.preview .line {
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  margin: 0.25rem 0;
+}
+body.admin-ui .preview-logo {
+  max-height: 64px;
+  object-fit: contain;
+  border-radius: var(--radius);
+}
+
+/* ── Cafe profile specific ── */
+body.admin-ui .panel-grid {
+  display: grid;
+  grid-template-columns: 1fr minmax(180px, 260px);
+  gap: 1.5rem;
+  align-items: start;
+}
+body.admin-ui .panel-grid .preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 0.25rem);
+  background: color-mix(in oklch, var(--muted) 30%, transparent);
+  text-align: center;
+}
+body.admin-ui .panel-grid .preview img {
+  max-width: 100%;
+  max-height: 80px;
+  object-fit: contain;
+  border-radius: var(--radius);
+}
+body.admin-ui .panel-grid .preview h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+body.admin-ui .panel-grid .preview .sub {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+body.admin-ui .card-note {
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  padding: 0.75rem;
+  border-radius: var(--radius);
+  background: color-mix(in oklch, var(--muted) 30%, transparent);
+  border: 1px solid var(--border);
+  line-height: 1.5;
+}
+
+/* ── Options-edit (produk opsi dinamis) ── */
+body.admin-ui .group-card {
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius) + 0.25rem);
+  background: var(--background);
+  display: grid;
+  gap: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+body.admin-ui .group-head {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.625rem;
+  flex-wrap: wrap;
+}
+body.admin-ui .group-head > div { display: grid; gap: 0.25rem; flex: 1; min-width: 140px; }
+body.admin-ui .group-options { display: grid; gap: 0.375rem; }
+body.admin-ui .opt-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+body.admin-ui .opt-row input { flex: 1; min-width: 100px; }
+body.admin-ui .opt-row input[type="number"] { flex: 0 0 100px; width: 100px; }
+body.admin-ui .disabled-note {
+  padding: 0.625rem 0.875rem;
+  border-radius: var(--radius);
+  background: color-mix(in oklch, var(--muted) 40%, transparent);
+  border: 1px solid var(--border);
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+  font-style: italic;
+}
+body.admin-ui .custom-wrap { display: grid; gap: 0.5rem; }
+body.admin-ui .block {
+  display: grid;
+  gap: 0.5rem;
+  grid-column: 1 / -1;
+}
+
+/* ── Karyawan-specific classes ── */
+body.admin-ui .karyawan-master-panel { overflow: hidden; }
+body.admin-ui .toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+body.admin-ui .toolbar .left,
+body.admin-ui .toolbar .right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+/* Karyawan person cell */
+body.admin-ui .karyawan-person-cell { padding: 0.625rem 0.75rem; }
+body.admin-ui .karyawan-person {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+body.admin-ui .karyawan-avatar {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+body.admin-ui .karyawan-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+body.admin-ui .karyawan-person-main { display: grid; gap: 2px; }
+body.admin-ui .karyawan-person-name {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+body.admin-ui .karyawan-person-role {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+}
+body.admin-ui .karyawan-person-tags {
+  display: flex;
+  gap: 0.25rem;
+  flex-wrap: wrap;
+  margin-top: 2px;
+}
+body.admin-ui .karyawan-mini-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  color: var(--muted-foreground);
+}
+body.admin-ui .karyawan-mini-tag.ok {
+  background: color-mix(in oklch, var(--chart-2) 12%, transparent);
+  border-color: color-mix(in oklch, var(--chart-2) 30%, transparent);
+  color: var(--chart-2);
+}
+body.admin-ui .karyawan-mini-tag.warn {
+  background: color-mix(in oklch, var(--chart-4) 12%, transparent);
+  border-color: color-mix(in oklch, var(--chart-4) 30%, transparent);
+  color: var(--chart-4);
+}
+body.admin-ui .karyawan-contact {
+  font-size: 0.875rem;
+  color: var(--foreground);
+}
+body.admin-ui .pin-help {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  line-height: 1.4;
+}
+/* Modal karyawan extras */
+body.admin-ui .modal-kicker {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+}
+body.admin-ui .modal-badge-row {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 0.75rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  background: color-mix(in oklch, var(--muted) 30%, transparent);
+}
+body.admin-ui .modal-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.625rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  color: var(--muted-foreground);
+}
+body.admin-ui .modal-badge.ok {
+  background: color-mix(in oklch, var(--chart-2) 12%, transparent);
+  border-color: color-mix(in oklch, var(--chart-2) 30%, transparent);
+  color: var(--chart-2);
+}
+body.admin-ui .modal-badge.blue {
+  background: oklch(0.541 0.196 265.755 / 0.12);
+  border-color: oklch(0.541 0.196 265.755 / 0.3);
+  color: oklch(0.541 0.196 265.755);
+}
+body.admin-ui .modal-badge.neutral {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--muted-foreground);
+}
+body.admin-ui .pin-grid {
+  display: grid;
+  gap: 0;
+}
+body.admin-ui .modal-section {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  gap: 1rem;
+}
+body.admin-ui .modal-section.full {
+  /* no extra specificity needed */
+}
+body.admin-ui .modal-section-head { display: grid; gap: 0.25rem; }
+body.admin-ui .modal-section-head h4 {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 700;
+  color: var(--foreground);
+}
+body.admin-ui .modal-section-head p {
+  margin: 0;
+  font-size: 0.8125rem;
+  color: var(--muted-foreground);
+}
+body.admin-ui .modal-section-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.875rem;
+}
+body.admin-ui .modal-section-grid.single {
+  grid-template-columns: 1fr;
+}
+body.admin-ui .pin-actions {
+  display: flex;
+  gap: 0.625rem;
+  padding: 1rem 1.5rem;
+  border-top: 1px solid var(--border);
+}
+body.admin-ui .pin-actions.full { grid-column: 1 / -1; }
+body.admin-ui .icon-btn {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--muted);
+  color: var(--foreground);
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+body.admin-ui .icon-btn:hover { background: color-mix(in oklch, var(--muted) 80%, transparent); }
+
+/* Karyawan profile (show page) */
+body.admin-ui .karyawan-profile-panel {
+  display: grid;
+  gap: 1rem;
+  overflow: hidden;
+}
+body.admin-ui .karyawan-profile-spotlight {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1.25rem;
+  align-items: start;
+}
+body.admin-ui .karyawan-profile-identity {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+body.admin-ui .karyawan-profile-avatar-shell {
+  flex-shrink: 0;
+}
+body.admin-ui .karyawan-profile-avatar {
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.375rem;
+  font-weight: 700;
+  overflow: hidden;
+}
+body.admin-ui .karyawan-profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+body.admin-ui .karyawan-profile-copy { display: grid; gap: 0.375rem; }
+body.admin-ui .karyawan-profile-code {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+body.admin-ui .karyawan-profile-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0;
+}
+body.admin-ui .karyawan-profile-role {
+  font-size: 0.875rem;
+  color: var(--muted-foreground);
+}
+body.admin-ui .karyawan-profile-badges {
+  display: flex;
+  gap: 0.375rem;
+  flex-wrap: wrap;
+}
+body.admin-ui .karyawan-profile-summary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+}
+body.admin-ui .karyawan-profile-summary-card {
+  padding: 0.875rem 1rem;
+  border-radius: calc(var(--radius) + 0.125rem);
+  border: 1px solid var(--border);
+  background: var(--background);
+  display: grid;
+  gap: 0.2rem;
+}
+body.admin-ui .karyawan-profile-summary-card.is-accent {
+  border-color: color-mix(in oklch, var(--primary) 30%, transparent);
+  background: color-mix(in oklch, var(--primary) 5%, transparent);
+}
+body.admin-ui .karyawan-profile-summary-card .label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+body.admin-ui .karyawan-profile-summary-card strong {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--foreground);
+  display: block;
+}
+body.admin-ui .karyawan-profile-summary-card small {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  display: block;
+}
+body.admin-ui .karyawan-profile-checklist {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+body.admin-ui .karyawan-profile-check {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  font-size: 0.8125rem;
+}
+body.admin-ui .karyawan-profile-check.is-ready {
+  background: color-mix(in oklch, var(--chart-2) 8%, transparent);
+  border-color: color-mix(in oklch, var(--chart-2) 25%, transparent);
+}
+body.admin-ui .karyawan-profile-check.is-ready strong { color: var(--chart-2); }
+body.admin-ui .karyawan-profile-check.is-pending {
+  background: color-mix(in oklch, var(--muted) 30%, transparent);
+}
+body.admin-ui .karyawan-profile-check.is-pending strong { color: var(--muted-foreground); }
+body.admin-ui .karyawan-profile-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--border);
+}
+body.admin-ui .karyawan-profile-card {
+  padding: 0.875rem 1rem;
+  border-radius: calc(var(--radius) + 0.125rem);
+  border: 1px solid var(--border);
+  background: var(--background);
+  display: grid;
+  gap: 0.25rem;
+}
+body.admin-ui .karyawan-profile-card .label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--muted-foreground);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+body.admin-ui .karyawan-profile-card .value {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--foreground);
+  margin-top: 0;
+}
+body.admin-ui .karyawan-profile-card .sub {
+  font-size: 0.75rem;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+/* ── Responsive for new classes ── */
+@media (max-width: 1024px) {
+  body.admin-ui .layout { grid-template-columns: 1fr; }
+  body.admin-ui .panel-grid { grid-template-columns: 1fr; }
+  body.admin-ui .karyawan-profile-spotlight { grid-template-columns: 1fr; }
+  body.admin-ui .karyawan-profile-summary { grid-template-columns: repeat(2, 1fr); }
+  body.admin-ui .karyawan-profile-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  body.admin-ui .form-grid { grid-template-columns: 1fr; }
+  body.admin-ui .row2,
+  body.admin-ui .row3 { grid-template-columns: 1fr; }
+  body.admin-ui .karyawan-profile-summary { grid-template-columns: 1fr; }
+  body.admin-ui .karyawan-profile-grid { grid-template-columns: 1fr; }
+  body.admin-ui .modal-section-grid { grid-template-columns: 1fr; }
+}
+
+/* ── Master Data index — cards grid ── */
+body.admin-ui .master-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+}
+@media (max-width: 900px) {
+  body.admin-ui .master-cards-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ══════════════════════════════════════════════
+   MOBILE — global admin responsive fixes
+   Semua perbaikan spesifik layar kecil
+══════════════════════════════════════════════ */
+
+@media (max-width: 900px) {
+  /* KPI grids — 2 kolom di tablet */
+  body.admin-ui .admin-kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  body.admin-ui .kpi-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  body.admin-ui .admin-grid-secondary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Statistik table grid */
+  body.admin-ui .stat-tables {
+    grid-template-columns: 1fr;
+  }
+
+  /* Layout 2-col pages */
+  body.admin-ui .layout,
+  body.admin-ui .panel-grid,
+  body.admin-ui .workspace-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Karyawan profile */
+  body.admin-ui .karyawan-profile-spotlight {
+    grid-template-columns: 1fr;
+  }
+  body.admin-ui .karyawan-profile-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  body.admin-ui .karyawan-profile-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  /* KPI grids — 1 kolom di HP */
+  body.admin-ui .admin-kpi-grid,
+  body.admin-ui .kpi-grid,
+  body.admin-ui .admin-grid-secondary {
+    grid-template-columns: 1fr;
+  }
+
+  /* Form grids — single col */
+  body.admin-ui .form-grid {
+    grid-template-columns: 1fr;
+  }
+  body.admin-ui .form-grid .full,
+  body.admin-ui .form-grid .row2,
+  body.admin-ui .form-grid .row3 {
+    grid-column: 1 / -1;
+  }
+  body.admin-ui .row2,
+  body.admin-ui .row3 {
+    grid-template-columns: 1fr;
+  }
+
+  /* Topbar actions — compact */
+  body.admin-ui .admin-page-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  /* Page head */
+  body.admin-ui .admin-page-head {
+    flex-direction: column;
+    gap: 0.625rem;
+  }
+
+  /* Table — horizontal scroll always */
+  body.admin-ui .table-wrap {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  body.admin-ui table {
+    min-width: 480px;
+  }
+
+  /* Filters form — stack vertically */
+  body.admin-ui .filters form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  body.admin-ui .filters form > * {
+    width: 100%;
+  }
+  body.admin-ui .filters form label {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  body.admin-ui .filters form input,
+  body.admin-ui .filters form select {
+    width: 100%;
+  }
+
+  /* Date range trigger — full width */
+  body.admin-ui .btn-daterange-trigger {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  /* Modebar */
+  body.admin-ui .modebar {
+    width: 100%;
+  }
+  body.admin-ui .mode-btn {
+    width: 100%;
+  }
+  body.admin-ui .mode-panel {
+    width: 100%;
+    left: 0;
+    right: 0;
+  }
+
+  /* Actions in panels — jangan paksa full-width */
+  body.admin-ui .actions,
+  body.admin-ui .pin-actions,
+  body.admin-ui .panel-actions {
+    flex-wrap: wrap;
+  }
+  body.admin-ui .actions.full > *,
+  body.admin-ui .pin-actions.full > * {
+    flex: 1 1 auto;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Aksi group in tables */
+  body.admin-ui .aksi {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  body.admin-ui .aksi .btn-neutral,
+  body.admin-ui .aksi .btn-danger,
+  body.admin-ui .aksi .btn-primary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Heat grid — 3 kolom */
+  body.admin-ui .heat-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* Statistik heat */
+  body.admin-ui .stat-heat-card .heat-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* Karyawan profile — single col */
+  body.admin-ui .karyawan-profile-summary,
+  body.admin-ui .karyawan-profile-grid,
+  body.admin-ui .karyawan-profile-checklist {
+    grid-template-columns: 1fr;
+  }
+
+  /* Modal card — full height on mobile */
+  body.admin-ui .modal-card {
+    max-height: 95vh;
+    border-radius: calc(var(--radius) + 0.25rem) calc(var(--radius) + 0.25rem) 0 0;
+    align-self: flex-end;
+  }
+  body.admin-ui .modal-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  /* Modal section grid */
+  body.admin-ui .modal-section-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Split layout */
+  body.admin-ui .split,
+  body.admin-ui .split-2,
+  body.admin-ui .setoran-grid,
+  body.admin-ui .swap-admin-grid,
+  body.admin-ui .leave-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Payroll policy summary */
+  body.admin-ui .payroll-policy-summary {
+    grid-template-columns: 1fr;
+  }
+
+  /* Master link cards */
+  body.admin-ui .admin-grid-secondary-links {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  /* Theme preset grid */
+  body.admin-ui .theme-preset-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Toolbar */
+  body.admin-ui .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  body.admin-ui .toolbar .left,
+  body.admin-ui .toolbar .right {
+    width: 100%;
+  }
+
+  /* Attendance summary strip — 2 col */
+  body.admin-ui .attendance-summary-strip {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* form-inline */
+  body.admin-ui .form-inline {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  body.admin-ui .form-inline .col {
+    width: 100%;
+  }
+
+  /* Quick filters */
+  body.admin-ui .quick-filters {
+    flex-wrap: wrap;
+  }
+  body.admin-ui .quick-btn {
+    flex: 1 1 auto;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Staff activity filter */
+  body.admin-ui .staff-activity-filter-form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Payroll month filter */
+  body.admin-ui .payroll-month-filter {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  body.admin-ui .payroll-month-filter > * {
+    width: 100%;
+  }
+
+  /* Admin grid secondary links — 1 col on very small */
+  body.admin-ui .admin-grid-secondary-links {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Very small screens — 360px */
+@media (max-width: 400px) {
+  body.admin-ui .admin-main > .container {
+    padding: 0.75rem;
+    gap: 0.875rem;
+  }
+  body.admin-ui .panel {
+    padding: 0.75rem;
+  }
+  body.admin-ui .admin-kpi-card,
+  body.admin-ui .admin-soft-card {
+    padding: 0.75rem;
+  }
+}
+
+
+/* ══════════════════════════════════════════════
+   KASIR ADMIN — dark theme overrides sudah
+   ditangani langsung di kasir.css via
+   body.admin-ui.kasir-ui { --kasir-* } variables.
+   Tidak perlu override tambahan di sini.
+══════════════════════════════════════════════ */
+
+
+/* ══════════════════════════════════════════════
+   KASIR ADMIN — redesign penuh untuk dark theme
+   Semua gradient dan warna yang tidak bisa pakai
+   variable saja, di-handle di sini.
+══════════════════════════════════════════════ */
+
+/* ── Base & Container ── */
+body.admin-ui.kasir-ui .container {
+  background: var(--background);
+}
+
+/* ── Hero — gradient menggunakan accent color tema ── */
+body.admin-ui.kasir-ui .flow-hero,
+body.admin-ui.kasir-ui .kasir-admin-hero,
+body.admin-ui.kasir-ui .hero.kasir-admin-hero {
+  background: linear-gradient(135deg,
+    var(--accent, var(--primary)) 0%,
+    color-mix(in srgb, var(--accent, var(--primary)) 70%, var(--background)) 100%
+  );
+  border-radius: calc(var(--radius) + 0.5rem);
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fallback jika --accent tidak ada: pakai sidebar bg dengan border */
+body.admin-ui.kasir-ui .kasir-admin-hero {
+  background: linear-gradient(135deg,
+    var(--sidebar-background) 0%,
+    var(--card) 100%
+  );
+  border: 1px solid var(--border);
+}
+
+/* Teks di hero harus tetap foreground (bukan putih jika bg terang) */
+body.admin-ui.kasir-ui .kasir-admin-hero h1,
+body.admin-ui.kasir-ui .kasir-admin-hero .hero-sub {
+  color: var(--foreground);
+}
+body.admin-ui.kasir-ui .kasir-admin-hero .stat-chip {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--foreground);
+}
+
+/* ── Hero text sudah putih — tetap putih ── */
+body.admin-ui.kasir-ui .flow-hero h1,
+body.admin-ui.kasir-ui .kasir-admin-hero h1,
+body.admin-ui.kasir-ui .hero-copy-text h1 {
+  color: var(--primary-foreground);
+}
+
+/* ── Panel & Card ── */
+body.admin-ui.kasir-ui .panel,
+body.admin-ui.kasir-ui .quick-card,
+body.admin-ui.kasir-ui .form-card,
+body.admin-ui.kasir-ui .form-panel {
+  background: var(--card);
+  border-color: var(--border);
+  border-radius: calc(var(--radius) + 0.25rem);
+}
+
+/* ── Kategori nav ── */
+body.admin-ui.kasir-ui .kategori-nav {
+  background: var(--card);
+  border-color: var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+body.admin-ui.kasir-ui .kategori-nav a {
+  background: var(--background);
+  color: var(--foreground);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .kategori-nav a:hover {
+  background: var(--muted);
+  border-color: color-mix(in oklch, var(--primary) 50%, transparent);
+  color: var(--foreground);
+}
+
+/* ── Product card / kategori block ── */
+body.admin-ui.kasir-ui .card {
+  background: var(--card);
+  border-color: var(--border);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+body.admin-ui.kasir-ui .card:hover {
+  border-color: color-mix(in oklch, var(--primary) 40%, transparent);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+}
+body.admin-ui.kasir-ui .kategori-block {
+  background: var(--card);
+  border-color: var(--border);
+}
+
+/* Card kicker chip */
+body.admin-ui.kasir-ui .card-kicker {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--muted-foreground);
+}
+
+/* Meta pills */
+body.admin-ui.kasir-ui .meta-pill {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--foreground);
+}
+body.admin-ui.kasir-ui .meta-pill.price {
+  background: color-mix(in oklch, var(--primary) 12%, transparent);
+  border-color: color-mix(in oklch, var(--primary) 30%, transparent);
+  color: color-mix(in oklch, var(--primary-foreground) 85%, transparent);
+}
+
+/* ── Picked area ── */
+body.admin-ui.kasir-ui .picked {
+  background: var(--background);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .picked-item {
+  background: var(--muted);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .picked-item button {
+  background: var(--background);
+  border-color: var(--border);
+  color: var(--foreground);
+}
+body.admin-ui.kasir-ui .summary-empty {
+  background: var(--background);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .summary-item {
+  background: var(--background);
+  border-color: var(--border);
+}
+
+/* ── Summary sidebar ── */
+body.admin-ui.kasir-ui .summary {
+  background: var(--card);
+  border-color: var(--border);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
+}
+body.admin-ui.kasir-ui .summary .row {
+  border-color: var(--border);
+  color: var(--foreground);
+}
+body.admin-ui.kasir-ui .summary-badge {
+  background: color-mix(in oklch, var(--primary) 12%, transparent);
+  border-color: color-mix(in oklch, var(--primary) 30%, transparent);
+  color: color-mix(in oklch, var(--primary-foreground) 80%, transparent);
+}
+body.admin-ui.kasir-ui .total-line {
+  background: color-mix(in oklch, var(--primary) 15%, transparent);
+  border-color: color-mix(in oklch, var(--primary) 35%, transparent);
+  color: var(--foreground);
+}
+body.admin-ui.kasir-ui #sumTotal {
+  color: color-mix(in oklch, var(--primary-foreground) 90%, transparent);
+  font-size: 1rem;
+}
+
+/* ── Footer bar ── */
+body.admin-ui.kasir-ui .footer {
+  background: color-mix(in oklch, var(--card) 95%, transparent);
+  border-color: var(--border);
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+  backdrop-filter: blur(8px);
+}
+body.admin-ui.kasir-ui .footer-label {
+  color: color-mix(in oklch, var(--primary-foreground) 70%, transparent);
+}
+
+/* ── Quick card chips ── */
+body.admin-ui.kasir-ui .chip {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--muted-foreground);
+}
+body.admin-ui.kasir-ui .chip strong {
+  color: var(--foreground);
+}
+
+/* ── Checkout specifics ── */
+body.admin-ui.kasir-ui .table-wrap {
+  background: var(--card);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .table-wrap thead th {
+  background: var(--muted);
+  color: var(--muted-foreground);
+}
+body.admin-ui.kasir-ui .table-wrap tbody tr:hover td {
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+}
+body.admin-ui.kasir-ui .table-wrap tbody tr:nth-child(even) {
+  background: color-mix(in oklch, var(--muted) 20%, transparent);
+}
+body.admin-ui.kasir-ui table td,
+body.admin-ui.kasir-ui table th {
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .totals {
+  background: var(--card);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .totals .line,
+body.admin-ui.kasir-ui .totals .grand {
+  color: var(--foreground);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .pay {
+  background: var(--card);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .opt {
+  background: color-mix(in oklch, var(--muted) 40%, transparent);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .opt:has(input:checked) {
+  background: color-mix(in oklch, var(--primary) 12%, transparent);
+  border-color: color-mix(in oklch, var(--primary) 40%, transparent);
+}
+body.admin-ui.kasir-ui .delivery-toggle {
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+  border-color: var(--border);
+  color: var(--foreground);
+}
+body.admin-ui.kasir-ui .delivery-panel {
+  background: var(--card);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .cash-line {
+  background: color-mix(in oklch, var(--muted) 30%, transparent);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .quick-cash button {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--foreground);
+}
+body.admin-ui.kasir-ui .quick-cash button:hover {
+  background: var(--accent);
+  border-color: color-mix(in oklch, var(--primary) 30%, transparent);
+}
+body.admin-ui.kasir-ui .discount-note {
+  background: color-mix(in oklch, var(--destructive) 10%, transparent);
+  border-color: color-mix(in oklch, var(--destructive) 35%, transparent);
+  color: var(--destructive);
+}
+
+/* ── Inputs ── */
+body.admin-ui.kasir-ui select,
+body.admin-ui.kasir-ui input:not([type=checkbox]):not([type=radio]),
+body.admin-ui.kasir-ui textarea {
+  background: var(--background);
+  color: var(--foreground);
+  border-color: var(--input);
+}
+body.admin-ui.kasir-ui select:focus,
+body.admin-ui.kasir-ui input:focus,
+body.admin-ui.kasir-ui textarea:focus {
+  border-color: var(--ring);
+  box-shadow: 0 0 0 2px color-mix(in oklch, var(--ring) 18%, transparent);
+}
+body.admin-ui.kasir-ui label {
+  color: var(--muted-foreground);
+}
+
+/* ── Shift cards (shift-start) ── */
+body.admin-ui.kasir-ui .shift-card-body {
+  background: var(--card);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .shift-card:hover .shift-card-body {
+  border-color: color-mix(in oklch, var(--primary) 50%, transparent);
+  background: var(--muted);
+}
+body.admin-ui.kasir-ui .shift-card input:checked + .shift-card-body {
+  background: color-mix(in oklch, var(--primary) 8%, transparent);
+  border-color: color-mix(in oklch, var(--primary) 60%, transparent);
+  box-shadow: 0 0 0 2px color-mix(in oklch, var(--primary) 20%, transparent);
+}
+body.admin-ui.kasir-ui .system-cash,
+body.admin-ui.kasir-ui .notice {
+  background: color-mix(in oklch, var(--primary) 10%, transparent);
+  border-color: color-mix(in oklch, var(--primary) 30%, transparent);
+  color: var(--foreground);
+}
+body.admin-ui.kasir-ui .fact-card {
+  background: var(--card);
+  border-color: var(--border);
+}
+
+/* ── Shift report cards ── */
+body.admin-ui.kasir-ui .report-mini-card {
+  background: var(--card);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .report-mini-card.accent {
+  background: color-mix(in oklch, var(--primary) 8%, transparent);
+  border-color: color-mix(in oklch, var(--primary) 30%, transparent);
+}
+body.admin-ui.kasir-ui .expense-item {
+  background: var(--card);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .input-wrap {
+  background: color-mix(in oklch, var(--muted) 40%, transparent);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .input-wrap:focus-within {
+  background: var(--background);
+  border-color: var(--ring);
+}
+body.admin-ui.kasir-ui .summary-row {
+  border-color: var(--border);
+  color: var(--foreground);
+}
+
+/* ── Shift close ── */
+body.admin-ui.kasir-ui .card.close-card {
+  background: var(--card);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .card.close-card.emphasis {
+  background: color-mix(in oklch, var(--primary) 6%, transparent);
+  border-color: color-mix(in oklch, var(--primary) 25%, transparent);
+}
+body.admin-ui.kasir-ui .close-confirm-note {
+  background: oklch(0.795 0.184 86.047 / 0.1);
+  border-color: oklch(0.795 0.184 86.047 / 0.35);
+  color: oklch(0.871 0.132 84.429);
+}
+
+/* ── Absensi ── */
+body.admin-ui.kasir-ui .absen-mini-card {
+  background: var(--card);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .absen-mini-card.accent {
+  background: color-mix(in oklch, var(--primary) 8%, transparent);
+  border-color: color-mix(in oklch, var(--primary) 30%, transparent);
+}
+body.admin-ui.kasir-ui .camera-panel {
+  background: var(--card);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .cam {
+  background: color-mix(in oklch, var(--muted) 30%, transparent);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .sub {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--muted-foreground);
+}
+body.admin-ui.kasir-ui .cam-icon-btn {
+  background: var(--card);
+  border-color: var(--border);
+  color: var(--foreground);
+}
+
+/* ── Modal (variant picker) ── */
+body.admin-ui.kasir-ui .modal-backdrop {
+  /* Reset admin modal-backdrop styles for kasir */
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  display: none;
+  background: rgba(0,0,0,0.65);
+}
+body.admin-ui.kasir-ui .modal-backdrop.open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+}
+body.admin-ui.kasir-ui .modal {
+  background: var(--card);
+  border-color: var(--border);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.5);
+}
+body.admin-ui.kasir-ui .modal input,
+body.admin-ui.kasir-ui .modal select {
+  background: var(--background);
+  border-color: var(--input);
+  color: var(--foreground);
+}
+
+/* ── Receipt (print page) ── */
+body.admin-ui.kasir-ui.kasir-receipt { background: var(--background); }
+body.admin-ui.kasir-ui .paper {
+  background: var(--card);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .meta {
+  background: color-mix(in oklch, var(--muted) 30%, transparent);
+  border-color: var(--border);
+}
+
+/* ── Promo cards ── */
+body.admin-ui.kasir-ui .promo-card {
+  background: var(--card);
+  border-color: var(--border);
+}
+
+/* ── Buttons — reinforcement ── */
+body.admin-ui.kasir-ui .btn-primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+body.admin-ui.kasir-ui .btn-primary:hover { opacity: 0.88; }
+body.admin-ui.kasir-ui .btn-neutral {
+  background: var(--card);
+  color: var(--foreground);
+  border-color: var(--border);
+}
+body.admin-ui.kasir-ui .btn-neutral:hover { background: var(--muted); }
+body.admin-ui.kasir-ui .btn-danger {
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+  border-color: var(--destructive);
+}
+
+/* ── Stock warning ── */
+body.admin-ui.kasir-ui .stock-warning {
+  background: color-mix(in oklch, var(--destructive) 12%, transparent);
+  border-color: color-mix(in oklch, var(--destructive) 35%, transparent);
+  color: var(--destructive);
+}
+/* ── Flow note ── */
+body.admin-ui.kasir-ui .flow-note {
+  background: color-mix(in oklch, var(--muted) 40%, transparent);
+  border-color: var(--border);
+  color: var(--muted-foreground);
+}
+body.admin-ui.kasir-ui .flow-note.note-warn {
+  background: oklch(0.795 0.184 86.047 / 0.1);
+  border-color: oklch(0.795 0.184 86.047 / 0.35);
+  color: oklch(0.871 0.132 84.429);
+}
+
+/* ── Section title ── */
+body.admin-ui.kasir-ui .section-title {
+  color: var(--foreground);
+}
+
+/* ── Alert ── */
+body.admin-ui.kasir-ui .alert.ok {
+  background: color-mix(in oklch, var(--chart-2) 12%, transparent);
+  border-color: color-mix(in oklch, var(--chart-2) 35%, transparent);
+  color: var(--chart-2);
+}
+body.admin-ui.kasir-ui .alert.err {
+  background: color-mix(in oklch, var(--destructive) 10%, transparent);
+  border-color: color-mix(in oklch, var(--destructive) 35%, transparent);
+  color: var(--destructive);
+}
+
+/* ── Shift flip card ── */
+body.admin-ui.kasir-ui .shift-flip-card {
+  background: var(--muted);
+  border-color: var(--border);
+  color: var(--foreground);
+}

@@ -1,0 +1,140 @@
+/* Table Components - Shadcn Dashboard Pattern */
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 0.5rem;
+  background: var(--card);
+}
+
+.admin-table-wrapper {
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+}
+
+.admin-table thead {
+  background: var(--muted);
+}
+
+.admin-table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 600;
+  color: var(--muted-foreground);
+}
+
+.admin-table td {
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--card-foreground);
+  border-top: 1px solid var(--border);
+}
+
+.admin-table tbody tr {
+  transition: background-color 0.15s;
+  background: var(--card);
+}
+
+.admin-table tbody tr:hover {
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+}
+
+.admin-table tbody tr:nth-child(even) {
+  background: color-mix(in oklch, var(--muted) 30%, transparent);
+}
+
+.admin-table tbody tr:nth-child(even):hover {
+  background: color-mix(in oklch, var(--muted) 60%, transparent);
+}
+
+/* Table Actions */
+.admin-table-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.admin-table-action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+  transition: color 0.15s, background-color 0.15s;
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+.admin-table-action-btn:hover {
+  background: color-mix(in oklch, var(--secondary) 80%, transparent);
+}
+
+.admin-table-action-btn.destructive {
+  background: color-mix(in oklch, var(--destructive) 10%, transparent);
+  color: var(--destructive);
+}
+
+.admin-table-action-btn.destructive:hover {
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+}
+
+/* Pagination */
+.admin-table-pagination {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-table-pagination-info {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--muted-foreground);
+}
+
+.admin-table-pagination-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.admin-table-pagination-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  transition: color 0.15s, background-color 0.15s;
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+.admin-table-pagination-btn:hover:not(:disabled) {
+  background: color-mix(in oklch, var(--secondary) 80%, transparent);
+}
+
+.admin-table-pagination-btn:disabled {
+  opacity: 0.5;
+}
+
+/* Empty State */
+.admin-table-empty {
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.admin-table-empty-message {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--muted-foreground);
+}

@@ -1,0 +1,27 @@
+{
+  "name": "KopiSop Kasir",
+  "short_name": "KopiSop",
+  "id": "/kasir",
+  "lang": "id",
+  "start_url": "/kasir",
+  "scope": "/",
+  "display_override": ["standalone", "minimal-ui"],
+  "display": "standalone",
+  "background_color": "#f2ebdf",
+  "theme_color": "#0b6e68",
+  "description": "Aplikasi kasir KopiSop untuk transaksi harian.",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

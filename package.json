@@ -1,0 +1,26 @@
+{
+    "$schema": "https://www.schemastore.org/package.json",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "build": "vite build",
+        "dev": "vite",
+        "postdev": "node -e \"const fs=require('fs');try{fs.unlinkSync('public/hot');}catch(e){}\"",
+        "clean": "node -e \"const fs=require('fs');try{fs.unlinkSync('public/hot');}catch(e){}\""
+    },
+    "devDependencies": {
+        "autoprefixer": "^10.4.27",
+        "axios": "^1.11.0",
+        "concurrently": "^9.0.1",
+        "laravel-vite-plugin": "^2.0.0",
+        "postcss": "^8.5.8",
+        "tailwindcss": "^3.4.19",
+        "vite": "^7.0.7"
+    },
+    "dependencies": {
+        "@vitejs/plugin-react": "^5.2.0",
+        "react": "^19.2.7",
+        "react-dom": "^19.2.7",
+        "recharts": "^3.8.1"
+    }
+}

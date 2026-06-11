@@ -1,0 +1,116 @@
+@import "./tokens.css";
+@import "./components/_shell.css";
+@import "./components/_sidebar.css";
+@import "./components/_topbar.css";
+@import "./components/_card.css";
+@import "./components/_table.css";
+@import "./components/_tabs.css";
+@import "./components/_badge.css";
+@import "./components/_button.css";
+@import "./components/_form.css";
+@import "./components/_modal.css";
+@import "./components/_chart.css";
+@import "./components/_legacy.css";
+@import "./components/_datepicker.css";
+@import "./components/_pages.css";
+
+/* ════════════════════════════════════════════════════════════
+   Transaksi & Kasir Admin Enhancements (Shadcn/UI Style)
+════════════════════════════════════════════════════════════ */
+
+/* Badge Variants untuk Metode Pembayaran */
+.admin-card-badge.cash {
+  background: oklch(0.627 0.159 155.995 / 0.1);
+  color: oklch(0.519 0.13 155.995);
+  border: 1px solid oklch(0.627 0.159 155.995 / 0.2);
+}
+
+.admin-card-badge.qris {
+  background: oklch(0.626 0.153 230.902 / 0.1);
+  color: oklch(0.539 0.138 230.902);
+  border: 1px solid oklch(0.626 0.153 230.902 / 0.2);
+}
+
+.admin-card-badge.debit {
+  background: oklch(0.728 0.17 68.545 / 0.1);
+  color: oklch(0.633 0.154 68.545);
+  border: 1px solid oklch(0.728 0.17 68.545 / 0.2);
+}
+
+.admin-card-badge.delivery {
+  background: oklch(0.539 0.236 300.318 / 0.1);
+  color: oklch(0.457 0.209 300.318);
+  border: 1px solid oklch(0.539 0.236 300.318 / 0.2);
+}
+
+/* Dark mode adjustments */
+body.admin-ui .admin-card-badge.cash {
+  background: oklch(0.627 0.159 155.995 / 0.15);
+  color: oklch(0.729 0.14 155.995);
+  border-color: oklch(0.627 0.159 155.995 / 0.3);
+}
+
+body.admin-ui .admin-card-badge.qris {
+  background: oklch(0.626 0.153 230.902 / 0.15);
+  color: oklch(0.722 0.122 230.902);
+  border-color: oklch(0.626 0.153 230.902 / 0.3);
+}
+
+body.admin-ui .admin-card-badge.debit {
+  background: oklch(0.728 0.17 68.545 / 0.15);
+  color: oklch(0.802 0.135 68.545);
+  border-color: oklch(0.728 0.17 68.545 / 0.3);
+}
+
+body.admin-ui .admin-card-badge.delivery {
+  background: oklch(0.539 0.236 300.318 / 0.15);
+  color: oklch(0.668 0.176 300.318);
+  border-color: oklch(0.539 0.236 300.318 / 0.3);
+}
+
+/* Container max-width untuk consistency */
+.container {
+  max-width: 1280px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+body.admin-ui .container {
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+/* Table improvements for better readability */
+.admin-table tbody tr:hover {
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+}
+
+.admin-table td {
+  vertical-align: middle;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  body.admin-ui .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .admin-page-head {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .admin-page-actions {
+    width: 100%;
+  }
+
+  .admin-chip {
+    flex: 1;
+    justify-content: center;
+  }
+}

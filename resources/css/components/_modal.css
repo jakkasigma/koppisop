@@ -1,0 +1,122 @@
+/* Modal/Dialog Components - Shadcn Dashboard Pattern */
+
+.admin-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  opacity: 0;
+  transition: opacity 0.2s;
+  pointer-events: none;
+}
+
+.admin-modal-backdrop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.admin-modal-card {
+  position: relative;
+  z-index: 50;
+  width: 100%;
+  max-width: 32rem;
+  max-height: 90vh;
+  overflow-y: auto;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  background: var(--background);
+  transform: scale(0.95);
+  transition: transform 0.2s ease;
+}
+
+.admin-modal-backdrop.show .admin-modal-card {
+  transform: scale(1);
+}
+
+.admin-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem;
+}
+
+.admin-modal-title {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.admin-modal-description {
+  margin-top: 0.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--muted-foreground);
+}
+
+.admin-modal-close {
+  border-radius: 0.125rem;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.admin-modal-close:hover {
+  opacity: 1;
+}
+
+.admin-modal-close:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring), 0 0 0 4px var(--background);
+}
+
+.admin-modal-body {
+  padding: 1.5rem;
+  color: var(--foreground);
+}
+
+.admin-modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  border-top: 1px solid var(--border);
+  padding: 1.5rem;
+}
+
+/* Modal Sizes */
+.admin-modal-card.modal-sm {
+  max-width: 24rem;
+}
+
+.admin-modal-card.modal-md {
+  max-width: 28rem;
+}
+
+.admin-modal-card.modal-lg {
+  max-width: 42rem;
+}
+
+.admin-modal-card.modal-xl {
+  max-width: 56rem;
+}
+
+.admin-modal-card.modal-full {
+  max-width: 80rem;
+}
+
+/* Legacy Support */
+.admin-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  border-top: 1px solid var(--border);
+  padding: 1rem;
+}

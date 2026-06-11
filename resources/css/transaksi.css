@@ -1,0 +1,1130 @@
+/* ════════════════════════════════════════════════════════════
+   Transaksi CSS — untuk kasir role (app-ui.trx-ui)
+   Admin role menggunakan admin.css langsung.
+   Scope: body.trx-ui (kasir role only)
+════════════════════════════════════════════════════════════ */
+
+/* ── Base reset pakai CSS vars ────────────────────────────── */
+body.trx-ui {
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--background, 0 0% 100%);
+    color: var(--foreground, 0 0% 3.9%);
+    min-height: 100vh;
+}
+body.trx-ui * { box-sizing: border-box; }
+
+body.trx-ui .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px 20px 40px;
+}
+
+/* ── Page Head ─────────────────────────────────────────────── */
+body.trx-ui .admin-page-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+body.trx-ui .admin-page-label {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted-foreground);
+    margin-bottom: 4px;
+}
+body.trx-ui .admin-page-head h1 {
+    margin: 0 0 4px;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--foreground);
+    line-height: 1.3;
+}
+body.trx-ui .admin-page-head p {
+    margin: 0;
+    font-size: 13px;
+    color: var(--muted-foreground);
+    line-height: 1.5;
+}
+body.trx-ui .admin-page-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+}
+
+/* ── Chip ──────────────────────────────────────────────────── */
+body.trx-ui .admin-chip {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 12px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--card);
+    font-size: 12.5px;
+    font-weight: 600;
+    color: var(--foreground);
+}
+body.trx-ui .admin-chip.soft {
+    background: var(--accent);
+    color: var(--accent-foreground);
+    border-color: transparent;
+}
+
+/* ── Buttons ───────────────────────────────────────────────── */
+body.trx-ui .btn-primary,
+body.trx-ui .btn-neutral,
+body.trx-ui .btn-danger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    border: 1.5px solid transparent;
+    transition: opacity 0.12s, background 0.12s;
+}
+body.trx-ui .btn-primary {
+    background: var(--primary);
+    color: var(--primary-foreground);
+    border-color: var(--primary);
+}
+body.trx-ui .btn-primary:hover { opacity: 0.85; }
+body.trx-ui .btn-neutral {
+    background: var(--card);
+    color: var(--foreground);
+    border-color: var(--border);
+}
+body.trx-ui .btn-neutral:hover { background: var(--muted); }
+body.trx-ui .btn-danger {
+    background: var(--destructive);
+    color: var(--destructive-foreground);
+    border-color: var(--destructive);
+}
+body.trx-ui .btn-danger:hover { opacity: 0.85; }
+body.trx-ui .btn-mini {
+    min-height: 32px !important;
+    padding: 0 10px !important;
+    font-size: 12px !important;
+    border-radius: 8px !important;
+}
+body.trx-ui .btn-soft-green {
+    background: color-mix(in oklch, var(--chart-2) 12%, transparent) !important;
+    border-color: color-mix(in oklch, var(--chart-2) 30%, transparent) !important;
+    color: var(--chart-2) !important;
+}
+
+/* ── Quick card ────────────────────────────────────────────── */
+body.trx-ui .quick-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 16px;
+    display: grid;
+    gap: 10px;
+}
+body.trx-ui .quick-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--foreground);
+}
+body.trx-ui .quick-filters {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+body.trx-ui .quick-btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 14px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    background: var(--background);
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--foreground);
+    text-decoration: none;
+    transition: background 0.12s;
+    cursor: pointer;
+}
+body.trx-ui .quick-btn:hover { background: var(--muted); }
+body.trx-ui .quick-btn.active-today {
+    background: color-mix(in oklch, var(--chart-2) 15%, transparent);
+    border-color: color-mix(in oklch, var(--chart-2) 40%, transparent);
+    color: var(--chart-2);
+}
+body.trx-ui .quick-btn.active-yesterday {
+    background: color-mix(in oklch, var(--chart-4) 15%, transparent);
+    border-color: color-mix(in oklch, var(--chart-4) 40%, transparent);
+    color: var(--chart-4);
+}
+body.trx-ui .hint {
+    font-size: 12px;
+    color: var(--muted-foreground);
+    line-height: 1.5;
+}
+
+/* ── Panel ─────────────────────────────────────────────────── */
+body.trx-ui .panel {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+}
+body.trx-ui .alert { margin: 12px; }
+
+/* ── Filter card ───────────────────────────────────────────── */
+body.trx-ui .filter-card {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--border);
+    background: color-mix(in oklch, var(--muted) 30%, transparent);
+}
+body.trx-ui .filter-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+body.trx-ui .filter-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--foreground);
+}
+body.trx-ui .form {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+body.trx-ui .form .col {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 120px;
+}
+body.trx-ui .form label {
+    font-size: 11.5px;
+    font-weight: 700;
+    color: var(--muted-foreground);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+body.trx-ui .form select,
+body.trx-ui .form input {
+    min-height: 38px;
+    border: 1.5px solid var(--input);
+    border-radius: 9px;
+    background: var(--background);
+    color: var(--foreground);
+    padding: 0 10px;
+    font-size: 13px;
+    outline: none;
+    font-family: inherit;
+}
+body.trx-ui .form select:focus,
+body.trx-ui .form input:focus {
+    border-color: var(--ring);
+}
+body.trx-ui .action-col { display: flex; align-items: flex-end; gap: 6px; }
+body.trx-ui .summary-chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+body.trx-ui .summary-chips .chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    border-radius: 7px;
+    border: 1px solid var(--border);
+    background: color-mix(in oklch, var(--muted) 50%, transparent);
+    font-size: 12px;
+    color: var(--muted-foreground);
+}
+body.trx-ui .summary-chips .chip strong { color: var(--foreground); }
+
+/* Date range trigger */
+body.trx-ui .btn-daterange-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    min-height: 38px;
+    padding: 0 14px;
+    border-radius: 9px;
+    border: 1.5px solid var(--border);
+    background: var(--background);
+    color: var(--foreground);
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+}
+body.trx-ui .btn-daterange-trigger.has-value {
+    border-color: var(--ring);
+    font-weight: 600;
+}
+
+/* ── Table ─────────────────────────────────────────────────── */
+body.trx-ui .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+body.trx-ui table { width: 100%; min-width: 600px; border-collapse: collapse; }
+body.trx-ui th {
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--muted-foreground);
+    background: var(--muted);
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+}
+body.trx-ui td {
+    padding: 10px 14px;
+    font-size: 13.5px;
+    color: var(--foreground);
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+}
+body.trx-ui tbody tr:last-child td { border-bottom: none; }
+body.trx-ui tbody tr:hover td { background: color-mix(in oklch, var(--muted) 50%, transparent); }
+body.trx-ui .num { text-align: right; white-space: nowrap; }
+
+/* ── Badges ────────────────────────────────────────────────── */
+body.trx-ui .id-chip {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 7px;
+    background: var(--muted);
+    border: 1px solid var(--border);
+    font-size: 12px;
+    font-weight: 700;
+    font-family: monospace;
+    color: var(--foreground);
+}
+body.trx-ui .method-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    background: var(--muted);
+    border: 1px solid var(--border);
+    color: var(--muted-foreground);
+    text-transform: uppercase;
+}
+body.trx-ui .method-badge.cash   { background: oklch(0.627 0.159 155.995 / 0.15); border-color: oklch(0.627 0.159 155.995 / 0.4); color: oklch(0.627 0.159 155.995); }
+body.trx-ui .method-badge.qris   { background: oklch(0.626 0.153 230.902 / 0.15); border-color: oklch(0.626 0.153 230.902 / 0.4); color: oklch(0.626 0.153 230.902); }
+body.trx-ui .method-badge.debit  { background: oklch(0.728 0.17 68.545 / 0.15); border-color: oklch(0.728 0.17 68.545 / 0.4); color: oklch(0.728 0.17 68.545); }
+body.trx-ui .method-badge.delivery { background: oklch(0.539 0.236 300.318 / 0.15); border-color: oklch(0.539 0.236 300.318 / 0.4); color: oklch(0.539 0.236 300.318); }
+body.trx-ui .status-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    background: var(--muted);
+    border: 1px solid var(--border);
+    color: var(--muted-foreground);
+}
+body.trx-ui .status-badge.lunas {
+    background: color-mix(in oklch, var(--chart-2) 15%, transparent);
+    border-color: color-mix(in oklch, var(--chart-2) 40%, transparent);
+    color: var(--chart-2);
+}
+body.trx-ui .status-badge.dibatalkan {
+    background: color-mix(in oklch, var(--destructive) 12%, transparent);
+    border-color: color-mix(in oklch, var(--destructive) 40%, transparent);
+    color: var(--destructive);
+}
+body.trx-ui .money { font-weight: 700; font-size: 13.5px; color: var(--foreground); }
+body.trx-ui .admin-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: var(--primary);
+    color: var(--primary-foreground);
+    font-size: 10.5px;
+    font-weight: 800;
+}
+body.trx-ui .shift-meta {
+    display: inline-flex;
+    align-items: center;
+    padding: 1px 6px;
+    border-radius: 4px;
+    background: var(--muted);
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--muted-foreground);
+}
+body.trx-ui .kasir-cell { display: grid; gap: 2px; }
+body.trx-ui .kasir-main { display: flex; align-items: center; gap: 4px; }
+body.trx-ui .kasir-submeta { font-size: 11.5px; color: var(--muted-foreground); }
+body.trx-ui .aksi-group { display: flex; gap: 6px; flex-wrap: wrap; }
+body.trx-ui form.inline { display: inline; }
+
+/* ── Alert ─────────────────────────────────────────────────── */
+body.trx-ui .alert {
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 13px;
+    margin-bottom: 14px;
+    border: 1px solid transparent;
+}
+body.trx-ui .alert.ok {
+    background: color-mix(in oklch, var(--chart-2) 12%, transparent);
+    border-color: color-mix(in oklch, var(--chart-2) 35%, transparent);
+    color: var(--chart-2);
+}
+body.trx-ui .alert.err {
+    background: color-mix(in oklch, var(--destructive) 10%, transparent);
+    border-color: color-mix(in oklch, var(--destructive) 35%, transparent);
+    color: var(--destructive);
+}
+
+/* ── Meta grid (show page) ─────────────────────────────────── */
+body.trx-ui .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding: 16px;
+    border-bottom: 1px solid var(--border);
+}
+body.trx-ui .meta-card {
+    padding: 12px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: color-mix(in oklch, var(--muted) 40%, transparent);
+    display: grid;
+    gap: 4px;
+}
+body.trx-ui .meta-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--muted-foreground);
+}
+body.trx-ui .meta-value {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--foreground);
+}
+body.trx-ui .status-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 3px 8px;
+    border-radius: 7px;
+    font-size: 12px;
+    font-weight: 700;
+    background: var(--muted);
+    border: 1px solid var(--border);
+    color: var(--muted-foreground);
+}
+body.trx-ui .status-pill.ok {
+    background: color-mix(in oklch, var(--chart-2) 15%, transparent);
+    border-color: color-mix(in oklch, var(--chart-2) 40%, transparent);
+    color: var(--chart-2);
+}
+body.trx-ui .status-pill.cancel {
+    background: color-mix(in oklch, var(--destructive) 12%, transparent);
+    border-color: color-mix(in oklch, var(--destructive) 40%, transparent);
+    color: var(--destructive);
+}
+body.trx-ui .shift-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 6px;
+    background: var(--muted);
+    border: 1px solid var(--border);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--foreground);
+}
+body.trx-ui .shift-order { font-size: 11.5px; color: var(--muted-foreground); margin-left: 4px; }
+body.trx-ui .admin-actions {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    gap: 8px;
+}
+
+/* ── Total ─────────────────────────────────────────────────── */
+body.trx-ui .total {
+    padding: 16px;
+    display: grid;
+    gap: 8px;
+    border-top: 1px solid var(--border);
+    max-width: 400px;
+    margin-left: auto;
+}
+body.trx-ui .total .row {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    font-size: 13.5px;
+}
+body.trx-ui .total .row span { color: var(--muted-foreground); }
+body.trx-ui .total .row strong { color: var(--foreground); font-weight: 700; }
+body.trx-ui .total .row.grand {
+    padding-top: 8px;
+    border-top: 2px solid var(--border);
+    font-size: 15px;
+}
+body.trx-ui .total .row.grand span { color: var(--foreground); font-weight: 700; }
+body.trx-ui .total .row.grand strong { color: var(--primary); font-size: 17px; font-weight: 800; }
+
+/* ── Pagination ────────────────────────────────────────────── */
+body.trx-ui .pages { padding: 12px 16px 0; }
+body.trx-ui .page-jump-wrap { padding: 8px 16px 16px; }
+body.trx-ui .page-jump-form {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: var(--foreground);
+}
+body.trx-ui .page-jump-form input[type="number"] {
+    width: 70px;
+    min-height: 36px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    padding: 0 10px;
+    font-size: 13px;
+    background: var(--background);
+    color: var(--foreground);
+}
+body.trx-ui .u-text-center { text-align: center; }
+body.trx-ui .u-text-muted  { color: var(--muted-foreground); font-size: 12.5px; }
+body.trx-ui .u-p-18        { padding: 1.125rem; }
+body.trx-ui .u-m-0         { margin: 0; }
+
+/* ── Topbar kasir ──────────────────────────────────────────── */
+.trx-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 0 20px;
+    min-height: 56px;
+    background: var(--primary, 0 0% 9%);
+    color: var(--primary-foreground, 0 0% 98%);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+}
+.trx-topbar-title {
+    font-size: 15px;
+    font-weight: 800;
+}
+.trx-topbar-actions { display: flex; align-items: center; gap: 8px; }
+.trx-topbar-btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 14px;
+    border-radius: 8px;
+    border: 1.5px solid var(--border);
+    background: var(--card);
+    color: var(--foreground);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 0.12s;
+}
+.trx-topbar-btn:hover { background: var(--muted); }
+
+/* ── Responsive ────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    body.trx-ui .container { padding: 16px 14px 32px; }
+    body.trx-ui .admin-page-head { flex-direction: column; gap: 10px; }
+    body.trx-ui .admin-page-actions { width: 100%; }
+    body.trx-ui .admin-page-actions .btn-primary,
+    body.trx-ui .admin-page-actions .btn-neutral { flex: 1 1 auto; justify-content: center; }
+    body.trx-ui .admin-page-actions .admin-chip { flex: 0 0 auto; }
+    body.trx-ui .meta-grid { grid-template-columns: 1fr 1fr; }
+    body.trx-ui .form { flex-direction: column; align-items: stretch; }
+    body.trx-ui .form .col { width: 100%; }
+    body.trx-ui .btn-daterange-trigger { width: 100%; }
+    body.trx-ui .quick-btn { flex: 1 1 auto; justify-content: center; }
+    body.trx-ui .action-col { flex-direction: row; }
+    body.trx-ui .action-col .btn-primary,
+    body.trx-ui .action-col .btn-neutral { flex: 1 1 auto; justify-content: center; }
+}
+@media (max-width: 480px) {
+    body.trx-ui .meta-grid { grid-template-columns: 1fr; }
+    body.trx-ui .total { max-width: 100%; }
+    body.trx-ui table { min-width: 520px; }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Enhanced Transaksi Styles
+   Modern, clean design dengan icon dan animasi
+══════════════════════════════════════════════════════════════ */
+
+/* Admin Page Head Enhanced */
+body.trx-ui .admin-page-head-enhanced {
+    position: relative;
+    padding: 24px;
+    background: linear-gradient(135deg, var(--card) 0%, color-mix(in oklch, var(--muted) 30%, transparent) 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+    margin-bottom: 20px;
+}
+body.trx-ui .admin-page-head-content {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+}
+body.trx-ui .admin-page-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    background: linear-gradient(135deg, var(--primary), color-mix(in oklch, var(--primary) 80%, transparent));
+    border-radius: 14px;
+    color: var(--primary-foreground);
+    box-shadow: 0 8px 20px color-mix(in oklch, var(--primary) 30%, transparent);
+}
+body.trx-ui .admin-page-icon .material-symbols-outlined {
+    font-size: 32px;
+}
+body.trx-ui .admin-page-title {
+    font-size: 28px;
+    font-weight: 900;
+    margin: 0 0 6px;
+}
+body.trx-ui .admin-page-description {
+    font-size: 14px;
+    line-height: 1.6;
+}
+body.trx-ui .admin-page-actions-enhanced {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+body.trx-ui .admin-chip-enhanced {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(0,0,0,.04);
+    transition: all 0.3s ease;
+}
+body.trx-ui .admin-chip-enhanced:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+body.trx-ui .admin-chip-enhanced .material-symbols-outlined {
+    font-size: 20px;
+}
+
+/* Quick Card Transaksi Enhanced */
+body.trx-ui .quick-card-transaksi-enhanced {
+    background: linear-gradient(135deg, var(--card) 0%, color-mix(in oklch, var(--muted) 20%, transparent) 100%);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
+    position: relative;
+    overflow: hidden;
+}
+body.trx-ui .quick-card-transaksi-enhanced::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary), var(--chart-2));
+}
+body.trx-ui .quick-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+}
+body.trx-ui .quick-title-wrap {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+body.trx-ui .quick-icon {
+    font-size: 28px;
+    color: var(--primary);
+}
+body.trx-ui .quick-status-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: color-mix(in oklch, var(--chart-2) 12%, transparent);
+    border: 1px solid color-mix(in oklch, var(--chart-2) 30%, transparent);
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    color: var(--chart-2);
+    animation: pulse-badge 2s ease-in-out infinite;
+}
+body.trx-ui .pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--chart-2);
+    border-radius: 50%;
+    animation: pulse-dot 2s ease-in-out infinite;
+}
+@keyframes pulse-badge {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+@keyframes pulse-dot {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.3); opacity: 0.5; }
+}
+
+body.trx-ui .quick-filters-enhanced {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+body.trx-ui .quick-btn-enhanced {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: all 0.3s ease;
+}
+body.trx-ui .quick-btn-enhanced:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,.1);
+}
+body.trx-ui .quick-btn-enhanced .material-symbols-outlined {
+    font-size: 18px;
+}
+body.trx-ui .hint-transaksi-enhanced {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 14px;
+    background: color-mix(in oklch, var(--muted) 40%, transparent);
+    border: 1px dashed var(--border);
+    border-radius: 12px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--muted-foreground);
+}
+body.trx-ui .hint-icon {
+    font-size: 18px;
+    color: var(--primary);
+    flex-shrink: 0;
+}
+
+/* Panel Transaksi Enhanced */
+body.trx-ui .panel-transaksi-enhanced {
+    box-shadow: 0 12px 32px rgba(0,0,0,.08);
+}
+
+/* Filter Card Enhanced */
+body.trx-ui .filter-card-enhanced {
+    background: linear-gradient(135deg, color-mix(in oklch, var(--muted) 40%, transparent) 0%, color-mix(in oklch, var(--muted) 20%, transparent) 100%);
+}
+body.trx-ui .filter-head-enhanced {
+    margin-bottom: 14px;
+}
+body.trx-ui .filter-head-content {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+body.trx-ui .filter-icon {
+    font-size: 24px;
+    color: var(--primary);
+}
+body.trx-ui .btn-export-enhanced {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+body.trx-ui .btn-export-enhanced:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px color-mix(in oklch, var(--primary) 30%, transparent);
+}
+body.trx-ui .btn-export-enhanced .material-symbols-outlined {
+    font-size: 18px;
+}
+
+body.trx-ui .form-transaksi-enhanced .col-enhanced {
+    position: relative;
+}
+body.trx-ui .form-transaksi-enhanced label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+body.trx-ui .form-transaksi-enhanced label .material-symbols-outlined {
+    font-size: 16px;
+}
+body.trx-ui .form-transaksi-enhanced select,
+body.trx-ui .form-transaksi-enhanced input {
+    transition: all 0.3s ease;
+}
+body.trx-ui .form-transaksi-enhanced select:focus,
+body.trx-ui .form-transaksi-enhanced input:focus {
+    box-shadow: 0 0 0 3px color-mix(in oklch, var(--ring) 10%, transparent);
+}
+
+body.trx-ui .action-col-enhanced {
+    display: flex;
+    gap: 8px;
+}
+body.trx-ui .btn-filter-enhanced,
+body.trx-ui .btn-reset-enhanced {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+body.trx-ui .btn-filter-enhanced:hover,
+body.trx-ui .btn-reset-enhanced:hover {
+    transform: scale(1.05);
+}
+body.trx-ui .btn-filter-enhanced .material-symbols-outlined,
+body.trx-ui .btn-reset-enhanced .material-symbols-outlined {
+    font-size: 18px;
+}
+
+body.trx-ui .btn-daterange-enhanced {
+    transition: all 0.3s ease;
+}
+body.trx-ui .btn-daterange-enhanced:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+}
+body.trx-ui .dp-trigger-icon {
+    font-size: 18px;
+}
+
+body.trx-ui .summary-chips-transaksi-enhanced {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+    margin-top: 14px;
+}
+body.trx-ui .chip-transaksi-enhanced {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 14px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.04);
+    transition: all 0.3s ease;
+}
+body.trx-ui .chip-transaksi-enhanced:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,.08);
+}
+body.trx-ui .chip-transaksi-enhanced .chip-icon {
+    font-size: 24px;
+    color: var(--primary);
+}
+body.trx-ui .chip-transaksi-enhanced .chip-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    letter-spacing: .4px;
+}
+body.trx-ui .chip-transaksi-enhanced .chip-value {
+    font-size: 16px;
+    font-weight: 900;
+    color: var(--foreground);
+    margin-left: auto;
+}
+
+/* Alert Transaksi Enhanced */
+body.trx-ui .alert-transaksi-enhanced {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 6px 16px rgba(0,0,0,.06);
+}
+body.trx-ui .alert-transaksi-enhanced .alert-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+/* Table Transaksi Enhanced */
+body.trx-ui .table-wrap-transaksi-enhanced {
+    position: relative;
+}
+body.trx-ui .table-wrap-transaksi-enhanced::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 3px;
+    height: 100%;
+    background: linear-gradient(180deg, var(--primary), var(--chart-2));
+    opacity: 0.6;
+}
+body.trx-ui .table-transaksi-enhanced th {
+    background: linear-gradient(135deg, var(--muted) 0%, color-mix(in oklch, var(--muted) 70%, transparent) 100%);
+}
+body.trx-ui .table-transaksi-enhanced .th-content {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+body.trx-ui .table-transaksi-enhanced .th-content .material-symbols-outlined {
+    font-size: 16px;
+    color: var(--primary);
+}
+body.trx-ui .tr-transaksi-enhanced {
+    transition: all 0.3s ease;
+}
+body.trx-ui .tr-transaksi-enhanced:hover {
+    background: color-mix(in oklch, var(--muted) 30%, transparent) !important;
+    transform: scale(1.01);
+}
+
+body.trx-ui .id-chip-enhanced {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    background: linear-gradient(135deg, color-mix(in oklch, var(--primary) 12%, transparent) 0%, color-mix(in oklch, var(--primary) 8%, transparent) 100%);
+    border: 1px solid color-mix(in oklch, var(--primary) 30%, transparent);
+    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+body.trx-ui .id-chip-enhanced .material-symbols-outlined {
+    font-size: 16px;
+    color: var(--primary);
+}
+
+body.trx-ui .time-cell,
+body.trx-ui .customer-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+body.trx-ui .time-icon,
+body.trx-ui .customer-icon {
+    font-size: 18px;
+    color: var(--muted-foreground);
+}
+
+body.trx-ui .kasir-cell-enhanced {
+    display: grid;
+    gap: 4px;
+}
+body.trx-ui .admin-tag-enhanced {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: linear-gradient(135deg, var(--primary), color-mix(in oklch, var(--primary) 90%, transparent));
+    box-shadow: 0 2px 8px color-mix(in oklch, var(--primary) 30%, transparent);
+}
+body.trx-ui .admin-tag-enhanced .material-symbols-outlined {
+    font-size: 14px;
+}
+body.trx-ui .kasir-name {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+body.trx-ui .kasir-name .material-symbols-outlined {
+    font-size: 18px;
+    color: var(--muted-foreground);
+}
+body.trx-ui .kasir-submeta-enhanced {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+body.trx-ui .shift-icon {
+    font-size: 14px;
+}
+
+body.trx-ui .method-badge-enhanced {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    font-size: 11px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+body.trx-ui .method-badge-enhanced .material-symbols-outlined {
+    font-size: 16px;
+}
+
+body.trx-ui .status-badge-enhanced {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+body.trx-ui .status-badge-enhanced .material-symbols-outlined {
+    font-size: 16px;
+}
+
+body.trx-ui .money-enhanced {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-weight: 800;
+    color: var(--primary);
+}
+body.trx-ui .money-icon {
+    font-size: 18px;
+}
+
+body.trx-ui .aksi-group-enhanced {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+body.trx-ui .btn-detail-enhanced,
+body.trx-ui .btn-batal-enhanced,
+body.trx-ui .btn-restore-enhanced {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: all 0.3s ease;
+}
+body.trx-ui .btn-detail-enhanced:hover,
+body.trx-ui .btn-batal-enhanced:hover,
+body.trx-ui .btn-restore-enhanced:hover {
+    transform: scale(1.05);
+}
+body.trx-ui .btn-detail-enhanced .material-symbols-outlined,
+body.trx-ui .btn-batal-enhanced .material-symbols-outlined,
+body.trx-ui .btn-restore-enhanced .material-symbols-outlined {
+    font-size: 16px;
+}
+
+body.trx-ui .tr-empty-enhanced td {
+    padding: 40px 20px !important;
+}
+body.trx-ui .empty-state-enhanced {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+body.trx-ui .empty-icon {
+    font-size: 48px;
+    color: var(--muted-foreground);
+    opacity: 0.5;
+}
+body.trx-ui .empty-text {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--muted-foreground);
+}
+
+/* Pagination Enhanced */
+body.trx-ui .pages-transaksi-enhanced {
+    padding: 16px;
+}
+body.trx-ui .page-jump-enhanced {
+    padding: 12px 16px 16px;
+    background: linear-gradient(135deg, color-mix(in oklch, var(--muted) 20%, transparent) 0%, transparent 100%);
+    border-top: 1px solid var(--border);
+}
+body.trx-ui .page-jump-form label {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 700;
+}
+body.trx-ui .page-jump-form label .material-symbols-outlined {
+    font-size: 18px;
+    color: var(--primary);
+}
+body.trx-ui .btn-jump-enhanced {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.3s ease;
+}
+body.trx-ui .btn-jump-enhanced:hover {
+    transform: scale(1.05);
+}
+body.trx-ui .btn-jump-enhanced .material-symbols-outlined {
+    font-size: 16px;
+}
+body.trx-ui .hint-jump-enhanced {
+    display: flex;
+    align-items: center;
+    padding: 6px 12px;
+    background: color-mix(in oklch, var(--muted) 40%, transparent);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 12px;
+    color: var(--muted-foreground);
+}
+
+/* Responsive Enhanced */
+@media (max-width: 768px) {
+    body.trx-ui .admin-page-head-content {
+        flex-direction: column;
+    }
+    body.trx-ui .admin-page-icon {
+        width: 48px;
+        height: 48px;
+    }
+    body.trx-ui .admin-page-title {
+        font-size: 24px;
+    }
+    body.trx-ui .summary-chips-transaksi-enhanced {
+        grid-template-columns: 1fr;
+    }
+}
+@media (max-width: 480px) {
+    body.trx-ui .chip-transaksi-enhanced {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    body.trx-ui .chip-transaksi-enhanced .chip-value {
+        margin-left: 0;
+    }
+}

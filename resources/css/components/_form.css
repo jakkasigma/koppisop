@@ -1,0 +1,189 @@
+/* Form Components - Shadcn Dashboard Pattern */
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.admin-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.admin-form label {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.admin-form-description {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--muted-foreground);
+}
+
+/* Input Fields */
+.admin-form input[type="text"],
+.admin-form input[type="email"],
+.admin-form input[type="password"],
+.admin-form input[type="number"],
+.admin-form input[type="tel"],
+.admin-form input[type="url"],
+.admin-form input[type="date"],
+.admin-form input[type="time"],
+.admin-form textarea,
+.admin-form select {
+  display: flex;
+  height: 2.5rem;
+  width: 100%;
+  border-radius: 0.375rem;
+  border: 1px solid var(--input);
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s;
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.admin-form textarea {
+  min-height: 5rem;
+  resize: vertical;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus,
+.admin-form select:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring), 0 0 0 4px var(--background);
+  border-color: var(--ring);
+}
+
+.admin-form input:disabled,
+.admin-form textarea:disabled,
+.admin-form select:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+/* Input Error State */
+.admin-form input.error,
+.admin-form textarea.error,
+.admin-form select.error {
+  border-color: var(--destructive);
+}
+
+.admin-form-error {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--destructive);
+}
+
+/* Checkbox & Radio */
+.admin-form input[type="checkbox"],
+.admin-form input[type="radio"] {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--input);
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s;
+}
+
+.admin-form input[type="checkbox"]:checked,
+.admin-form input[type="radio"]:checked {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+/* Button Base */
+.admin-btn,
+.admin-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  transition: color 0.15s, background-color 0.15s, border-color 0.15s;
+}
+
+.admin-btn:focus-visible,
+.admin-form button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--ring), 0 0 0 4px var(--background);
+}
+
+.admin-btn:disabled,
+.admin-form button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Button Variants */
+.admin-btn-primary,
+.admin-form button[type="submit"] {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.admin-btn-primary:hover,
+.admin-form button[type="submit"]:hover {
+  background: color-mix(in oklch, var(--primary) 90%, transparent);
+}
+
+.admin-btn-secondary {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+}
+
+.admin-btn-secondary:hover {
+  background: color-mix(in oklch, var(--secondary) 80%, transparent);
+}
+
+.admin-btn-destructive {
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+}
+
+.admin-btn-destructive:hover {
+  background: color-mix(in oklch, var(--destructive) 90%, transparent);
+}
+
+.admin-btn-outline {
+  border: 1px solid var(--input);
+  background: transparent;
+  color: var(--foreground);
+}
+
+.admin-btn-outline:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+.admin-btn-ghost {
+  background: transparent;
+  color: var(--foreground);
+}
+
+.admin-btn-ghost:hover {
+  background: var(--accent);
+  color: var(--accent-foreground);
+}
+
+/* Legacy Support */
+.admin-btn:not([class*="admin-btn-"]),
+.admin-form button:not([type]):not([class*="admin-btn-"]) {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.admin-btn:not([class*="admin-btn-"]):hover,
+.admin-form button:not([type]):not([class*="admin-btn-"]):hover {
+  background: color-mix(in oklch, var(--primary) 90%, transparent);
+}

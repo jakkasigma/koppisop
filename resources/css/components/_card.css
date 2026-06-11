@@ -1,0 +1,214 @@
+/* Card Components - Shadcn Dashboard Pattern */
+
+.admin-section-card {
+  display: block;
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  transition: all 0.2s;
+  background: var(--card);
+  color: var(--card-foreground);
+}
+
+.admin-section-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+}
+
+.admin-card-header {
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.admin-card-title {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  font-weight: 600;
+  color: var(--card-foreground);
+}
+
+.admin-card-description {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  color: var(--muted-foreground);
+}
+
+.admin-card-content > * + * {
+  margin-top: 1rem;
+}
+
+.admin-card-footer {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--border);
+  padding-top: 1rem;
+}
+
+/* Card Badge Variants */
+.admin-card-badge {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.375rem;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.admin-card-badge.ok {
+  background: color-mix(in oklch, var(--chart-2) 20%, transparent);
+  color: var(--chart-2);
+}
+
+.admin-card-badge.warn {
+  background: color-mix(in oklch, var(--chart-4) 20%, transparent);
+  color: var(--chart-4);
+}
+
+.admin-card-badge.err {
+  background: color-mix(in oklch, var(--destructive) 20%, transparent);
+  color: var(--destructive);
+}
+
+/* Dashboard Stats Card */
+.admin-dashboard-card {
+  border-radius: 0.5rem;
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  background: var(--card);
+}
+
+.admin-dashboard-card .admin-card-header {
+  margin-bottom: 1rem;
+}
+
+.admin-stat-value {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  font-weight: 700;
+  color: var(--card-foreground);
+}
+
+.admin-stat-label {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  font-weight: 500;
+  color: var(--muted-foreground);
+}
+
+.admin-stat-change {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 500;
+}
+
+.admin-stat-change.positive {
+  color: var(--chart-2);
+}
+
+.admin-stat-change.negative {
+  color: var(--destructive);
+}
+
+/* Action List Card */
+.admin-dashboard-card .admin-action-list a {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
+  transition: background-color 0.15s;
+  color: var(--card-foreground);
+  text-decoration: none;
+}
+
+.admin-dashboard-card .admin-action-list a:hover {
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+}
+
+.admin-dashboard-card .admin-action-icon {
+  margin-right: 0.75rem;
+  display: flex;
+  height: 2.5rem;
+  width: 2.5rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  font-weight: 700;
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.admin-dashboard-card .admin-action-row em {
+  margin-left: auto;
+  font-style: normal;
+  color: var(--muted-foreground);
+}
+
+/* Table Status Pills */
+.admin-dashboard-table .status-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.375rem;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 600;
+}
+
+.admin-dashboard-table .status-pill.ok {
+  background: color-mix(in oklch, var(--chart-2) 20%, transparent);
+  color: var(--chart-2);
+}
+
+.admin-dashboard-table .status-pill.cancel {
+  background: color-mix(in oklch, var(--destructive) 20%, transparent);
+  color: var(--destructive);
+}
+
+/* Ranking List */
+.admin-dashboard-split .admin-ranking-list .admin-ranking-row {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem 0;
+}
+
+.admin-dashboard-split .admin-ranking-row span {
+  min-width: 2rem;
+}
+
+/* News List */
+.admin-dashboard-split .admin-news-list .admin-news-row {
+  display: block;
+  border-bottom: 1px solid var(--border);
+  padding: 0.75rem 0;
+  transition: background-color 0.15s;
+  color: var(--card-foreground);
+  text-decoration: none;
+}
+
+.admin-dashboard-split .admin-news-row:hover {
+  background: color-mix(in oklch, var(--muted) 50%, transparent);
+}
+
+.admin-news-row-title {
+  font-weight: 500;
+}
+
+.admin-news-row-meta {
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: var(--muted-foreground);
+}

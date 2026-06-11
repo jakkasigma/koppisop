@@ -1,0 +1,10 @@
+{
+  "dependencies": {
+    "postcss-cli": "^11.0.1"
+  },
+  "_npx": {
+    "packages": [
+      "postcss-cli"
+    ]
+  }
+}
