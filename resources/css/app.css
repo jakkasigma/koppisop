@@ -712,14 +712,14 @@ body.page-transaksi-show .status-pill {
 body.page-transaksi-show .status-pill.ok { background:color-mix(in srgb, var(--accent-2) 14%, #ffffff); color:#14532d; border-color:color-mix(in srgb, var(--accent-2) 30%, #ffffff); }
 body.page-transaksi-show .status-pill.cancel { background:#fee2e2; color:#991b1b; border-color:#fecaca; }
 body.page-transaksi-show .table-wrap table { min-width:680px; }
-body.page-transaksi-show .table-wrap thead th { background:#f2fbf9; }
-body.page-transaksi-show .table-wrap tbody tr:nth-child(even) { background:#fbfffe; }
-body.page-transaksi-show .table-wrap tbody tr:hover { background:#eefaf7; }
+body.page-transaksi-show .table-wrap thead th { background:#000000; }
+body.page-transaksi-show .table-wrap tbody tr:nth-child(even) { background:#000000; }
+body.page-transaksi-show .table-wrap tbody tr { background:#000000; }
 body.page-transaksi-show .total {
     margin-top:12px;
-    border:1px solid #dbe8e5;
+    border:1px solid #000000;
     border-radius:14px;
-    background:linear-gradient(180deg,#ffffff 0%, #f8fffd 100%);
+    background:#000000;
     padding:14px;
     display:grid;
     gap:8px;

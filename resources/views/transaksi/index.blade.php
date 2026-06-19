@@ -219,19 +219,19 @@
                         </td>
                         <td>
                             <div class="admin-table-actions">
-                                <a class="btn-sm btn-outline" href="{{ route('transaksi.show', $item) }}">Detail</a>
+                                <a class="btn btn-outline" href="{{ route('transaksi.show', $item) }}">Detail</a>
                                 @if(auth()->user()->role === 'admin')
                                     @if ($item->status_pembayaran !== 'dibatalkan')
                                         <form class="inline" method="post" action="{{ route('transaksi.batal', $item) }}"
                                               onsubmit="return confirm('Batalkan transaksi ini? Stok akan dikembalikan.')">
                                             @csrf
-                                            <button class="btn-sm btn-destructive" type="submit">Batal</button>
+                                            <button class="btn btn-destructive" type="submit">Batal</button>
                                         </form>
                                     @else
                                         <form class="inline" method="post" action="{{ route('transaksi.restore', $item) }}"
                                               onsubmit="return confirm('Restore transaksi ini? Stok akan dipotong kembali.')">
                                             @csrf
-                                            <button class="btn-sm btn-secondary" type="submit">Restore</button>
+                                            <button class="btn btn-secondary" type="submit">Restore</button>
                                         </form>
                                     @endif
                                 @endif
@@ -257,7 +257,7 @@
             {{ $pesanan->links() }}
 
             @if($pesanan->lastPage() > 1)
-                <form method="get" action="{{ route('transaksi.index') }}" class="page-jump-form">
+                <form method="get" action="{{ route('transaksi.index') }}" class="xpage-jump-form">
                     @if(! empty($filters['operasional']))
                         <input type="hidden" name="operasional" value="{{ $filters['operasional'] }}">
                     @endif
@@ -278,7 +278,7 @@
                            max="{{ $pesanan->lastPage() }}"
                            value="{{ $pesanan->currentPage() }}"
                            class="u-w-120">
-                    <button class="btn-sm btn-default" type="submit">Buka</button>
+                    <button class="btn btn-default" type="submit">Buka</button>
                     <span class="u-text-sm u-text-muted">(Maks {{ $pesanan->lastPage() }})</span>
                 </form>
             @endif
